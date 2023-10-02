@@ -8,3 +8,6 @@ def index(request):
         'heading': 'Welcome to home page'
     }
     return render(request, 'index.html', context)
+
+def contact(request):
+    return render(request, 'contact.html')
