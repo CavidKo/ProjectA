@@ -1,0 +1,60 @@
+{%  load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CozaStore</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="https://cdn.create.vista.com/api/media/small/440588268/stock-video-turquoise-drying-clothes-icon-isolated-on-blue-background-clean-shirt-wash-clothes-on-a-rope?videoStaticPreview=true&token=">
+</head>
+<body>
+    <div class="main">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <h1>Sign-in</h1>
+            
+            {% csrf_token %}
+            
+            <div class="input-box">
+                {{ form.username }}
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                {{ form.email }}
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div class="input-box">
+                {{ form.first_name }}
+                <i class='bx bxs-user-circle' ></i>
+            </div>
+            <div class="input-box">
+                {{ form.last_name }}
+                <i class='bx bxs-user-circle' ></i>
+            </div>
+                        
+            <div class="input-box">
+                {{ form.password }}
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                {{ form.password2 }}
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="register-link">
+                <br><hr><br>
+                <button type="submit">Register</button>
+            </div>         
+        </form>
+    </div>
+</body>
+</html>
+</html>

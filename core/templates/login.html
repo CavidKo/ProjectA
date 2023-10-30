@@ -1,0 +1,51 @@
+{%  load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CozaStore</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="https://cdn.create.vista.com/api/media/small/440588268/stock-video-turquoise-drying-clothes-icon-isolated-on-blue-background-clean-shirt-wash-clothes-on-a-rope?videoStaticPreview=true&token=">
+</head>
+<body>
+    <div class="main">
+        <form method="post">
+            <h1>CozaStore</h1>
+            {% csrf_token %}
+            
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <div class="input-box">
+                {{ form.username }}
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                {{ form.password }}
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label"><input type="checkbox">Remember me</label>
+                <a href="#">Forgot password?</a>
+                <br>
+            </div>
+            <br>
+            <button type="submit" name="login", class="btn">Login</button>            
+        </form>
+        
+        <div class="register-link">
+            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            <br><hr><br>
+            <button type="submit" onclick="location.href='{% url 'home' %}'">Continue without login</button>
+        </div>
+    </div>
+</body>
+</html>
+</html>

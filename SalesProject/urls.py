@@ -17,8 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core.urls import urlpatterns as core_urls
+from user.urls import urlpatterns as user_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(core_urls))
+    path('cozastore/', include(core_urls)),
+    path('', include(user_urls)),
+    path('grappelli/', include('grappelli.urls')),   # grappelli
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
+
+##################################################################################
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
