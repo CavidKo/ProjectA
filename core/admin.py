@@ -6,11 +6,12 @@ from core.models import *
 admin.site.register(Contact)
 admin.site.register(Settings)
 admin.site.register(Logo)
+admin.site.register(CartProduct)
 
 
 @admin.register(Clothes)
 class ClothesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'category', 'active')
+    list_display = ('name', 'price', 'active')
     list_filter = ('category', 'active')
     search_fields = ('name', 'price', 'category__category')
     list_per_page = 10
@@ -21,11 +22,11 @@ class ClothesAdmin(admin.ModelAdmin):
         }),
         ('Advanced', {
             'classes': ('collapse',),
-            'fields': ('description', 'category', 'size', 'color', 'image', 'added_to_whishlist', 'slug')
+            'fields': ('description', 'category', 'size', 'tag', 'color', 'weight', 'length', 'width', 'height', 'materials', 'image', 'added_to_whishlist', 'slug')
         })
     )
 
-    autocomplete_fields = ('category', 'size', 'color')
+    autocomplete_fields = ('category', 'size', 'color', 'tag')
 
 
 @admin.register(Categories)
@@ -41,6 +42,11 @@ class SizeAdmin(admin.ModelAdmin):
 @admin.register(Colors)
 class ColorAdmin(admin.ModelAdmin):
     search_fields = ('color', )
+
+
+@admin.register(Tags)
+class TagsAdmin(admin.ModelAdmin):
+    search_fields = ('tag', )
 
 admin.site.site_header = 'Cozastore admin panel'
 

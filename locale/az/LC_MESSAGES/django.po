@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-20 12:00+0400\n"
+"PO-Revision-Date: 2023-11-20 12:01+0400\n"
+"Last-Translator:   <cavidK@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: SalesProject/settings.py:196
+msgid "English"
+msgstr "İngiliscə"
+
+#: SalesProject/settings.py:197
+msgid "Azerbaijani"
+msgstr "Azərbaycanca"
+
+#: core/models.py:25 core/models.py:26
+msgid "Contact"
+msgstr "Əlaqə"
+
+#: core/models.py:36 core/models.py:37
+msgid "Colors"
+msgstr "Rənglər"
+
+#: core/models.py:47 core/models.py:48
+msgid "Categories"
+msgstr "Kateqoriyalar"
+
+#: core/models.py:58 core/models.py:59
+msgid "Sizes"
+msgstr "Ölçülər"
+
+#: core/models.py:69 core/models.py:70
+msgid "Tags"
+msgstr "Teqlər"
+
+#: core/models.py:105 core/models.py:106
+msgid "Clothes"
+msgstr "Modellər"
+
+#: core/models.py:124 core/models.py:125
+msgid "Cart products"
+msgstr "Kart məhsulları"
+
+#: core/models.py:139
+msgid "Settings"
+msgstr "Parametrlər"
+
+#: core/models.py:146 core/models.py:147
+msgid "Logo"
+msgstr "Loqo"
+
+#: core/templates/index.html:542
+msgid "Load More"
+msgstr "Daha çox"
+
+#: core/templates/login.html:88
+msgid "Remember me"
+msgstr "Məni xatırla"
+
+#: core/templates/login.html:89
+msgid "Forgot password?"
+msgstr "Parolu unutdun?"
+
+#: core/templates/login.html:93
+msgid "Login"
+msgstr "Giriş et"
+
+#: core/templates/login.html:98
+msgid "Login with Google"
+msgstr "Google-la daxil ol"
+
+#: core/templates/login.html:104
+msgid "Don't have an account?"
+msgstr "Hələ hesabın yoxdur?"
+
+#: core/templates/login.html:104
+msgid "Register"
+msgstr "Qeydiyyatdan keç"
+
+#: core/templates/login.html:106
+msgid "Continue without login"
+msgstr "Giriş etmədən davam et"

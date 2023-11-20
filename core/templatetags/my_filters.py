@@ -1,5 +1,4 @@
 from django import template
-
 from core.models import Clothes
 
 
@@ -15,5 +14,10 @@ def get_products(offset, limit, down_up):
 @register.filter
 def filter_(any_string: str):
     return any_string.upper()
+
+
+@register.filter
+def multiply_(price, quantity):
+    return price * quantity
 
 

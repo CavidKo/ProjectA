@@ -1,5 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils import timezone
+from decimal import Decimal
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -19,7 +22,8 @@ class Contact(BaseModel):
         return self.email
     
     class Meta:
-        verbose_name_plural = 'Contact'
+        verbose_name_plural = _('Contact')
+        verbose_name = _('Contact')
     
 
 class Colors(BaseModel):
@@ -29,7 +33,8 @@ class Colors(BaseModel):
         return self.color
     
     class Meta:
-        verbose_name_plural = 'Colors'
+        verbose_name_plural = _('Colors')
+        verbose_name = _('Colors')
     
 
 class Categories(BaseModel):
@@ -39,7 +44,8 @@ class Categories(BaseModel):
         return self.category
     
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = _('Categories')
+        verbose_name = _('Categories')
     
 
 class Sizes(BaseModel):
@@ -49,23 +55,45 @@ class Sizes(BaseModel):
         return self.size
     
     class Meta:
-        verbose_name_plural = 'Sizes'
+        verbose_name_plural = _('Sizes')
+        verbose_name = _('Sizes')
+
+
+class Tags(BaseModel):
+    tag = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.tag
+    
+    class Meta:
+        verbose_name_plural = _('Tags')
+        verbose_name = _('Tags')
 
 
 class Clothes(BaseModel):
     name = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.FloatField(null=True)
     description = RichTextField()
     image = models.ImageField(upload_to='media/', null=True, blank=True)
     added_to_whishlist = models.BooleanField(default=False)
-    size = models.ForeignKey(Sizes, on_delete=models.CASCADE)
-    color = models.ForeignKey(Colors, on_delete=models.CASCADE)
+    # color = models.ForeignKey(Colors, on_delete=models.CASCADE, null=True)
+    # size = models.ForeignKey(Sizes, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    color = models.ManyToManyField(Colors)
+    tag = models.ManyToManyField(Tags)
+    size = models.ManyToManyField(Sizes)
+    weight = models.CharField(max_length=10, null=True)
+    length = models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    width = models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    height = models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    materials = models.CharField(max_length=150, null=True)
     active = models.BooleanField(default=True)
     slug = models.SlugField(null=True, blank=True)
 
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):       
+        if self.create_time is None:
+            self.create_time = timezone.now()
         if self.slug is None:
             self.slug = f"{self.name.replace(' ', '-').lower()}-{str(self.create_time.strftime('%d-%m-%Y'))}"
         super().save(*args, **kwargs)
@@ -74,22 +102,47 @@ class Clothes(BaseModel):
         return self.name
     
     class Meta:
-        verbose_name_plural = 'Clothes'
+        verbose_name_plural = _('Clothes')
+        verbose_name = _('Clothes')
+
+
+class CartProduct(BaseModel):
+    product = models.ForeignKey(Clothes, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1, null=True)
+    size = models.CharField(max_length=10, null=True)
+    color = models.CharField(max_length=10, null=True)
+    overall_sum = models.FloatField(null=True)
+
+    def save(self, *args, **kwargs):
+        self.overall_sum = float(self.quantity) * self.product.price
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.product.name
+    
+    class Meta:
+        verbose_name_plural = _('Cart products')
+        verbose_name = _('Cart products')
     
 
 class Settings(BaseModel):
+    adress = models.CharField(max_length=250, default=None)
+    phone = models.CharField(max_length=20, default=None)
+    support = models.EmailField(max_length=100, default=None)
     facebook = models.URLField(max_length=50)
     instagram = models.URLField(max_length=50)
     pinterest = models.URLField(max_length=50)
-    info = models.CharField(max_length=500)
+    info = models.CharField(max_length=500, null=True)
 
     class Meta:
         verbose_name_plural = 'Settings'
+        verbose_name = _('Settings')
 
 
 class Logo(BaseModel):
     logo = models.ImageField(upload_to='media/', null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = 'Logo'
+        verbose_name_plural = _('Logo')
+        verbose_name = _('Logo')
     
