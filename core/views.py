@@ -1,8 +1,11 @@
+from datetime import datetime
+from random import shuffle
 import time
 from typing import Any
 # from django.db.models.query import _BaseQuerySet
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
+from requests import request
 from .models import *
 from core.forms import ContactForm
 from django.views.generic import ListView, DetailView
@@ -15,6 +18,14 @@ from decimal import Decimal
 from random import shuffle
 from django.shortcuts import get_object_or_404
 from core.context_processors.context_processors import settings
+
+
+
+month_mapping = {
+    'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
+    'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8,
+    'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
+}
 
 
 # Create your views here.
@@ -31,12 +42,64 @@ def index(request):
         product = Clothes.objects.all()
         count = product.count()
     
+    category = request.GET.get('category')
+    # category
+    if category and category != 'all':
+        product = product.filter(category__category=str(category).title())
+
+    sort_by = request.GET.get('sort_by')
+    # sort_by
+    if sort_by:
+        if str(sort_by) == 'hightolow':
+            product = product.order_by('-price')
+        elif str(sort_by) == 'lowtohigh':
+            product = product.order_by('price')
+        elif str(sort_by) == 'newness':
+            product = product.order_by('-update_time')
+        elif str(sort_by) == 'rating':
+            product_list = list(product)
+            shuffle(product_list)
+        elif str(sort_by) == 'popularity':
+            product_list = list(product)
+            shuffle(product_list)
+        else:
+            product = product
+
+    
+    price = request.GET.get('price')    
+    # price                  
+    if price and price != 'all':
+        if 'gte' not in str(price):
+            price_gte = Decimal(str(price).split('-')[0].replace('$', ''))
+            price_lte = Decimal(str(price).split('-')[1].replace('$', ''))
+            product = product.filter(price__range=(price_gte, price_lte))
+        else:
+            price_gte = Decimal(str(price).split('$')[1])
+            product = product.filter(price__gte=price_gte)
+
+    color = request.GET.get('color')
+    # color
+    if color:
+        selected_color = Colors.objects.filter(color__in=[str(color).title()])
+        product = product.filter(color__in=selected_color)
+
+    tag = request.GET.get('tag')
+    # tag
+    if tag:
+        selected_tag = Tags.objects.filter(tag__in=[str(tag).title()])
+        product = product.filter(tag__in=selected_tag)
+
+    
     context = {
-        'product': product,
+        'products': product,
         'count': count,
         'userinput': userinput if userinput is not None else '',
+        'search': userinput,
+        'sort_by': sort_by,
+        'price': price,
+        'color': color,
+        'tag': tag,
     }
-    print('context: ', context)
     return render(request, 'index.html', context)
 
 
@@ -140,9 +203,96 @@ def contact(request):
             print(result.errors)
     return render(request, 'contact.html', context)
 
+class BlogList(ListView):
+    model = Blog
+    template_name = 'blog.html'
+    context_object_name = 'blogs'
+    ordering = ['-create_time']
+    paginate_by = 3
 
-def blog(request):
-    return render(request, 'blog.html')
+    def get_context_data(self, **kwargs: Any):
+        context = super().get_context_data(**kwargs)
+        context['count'] = Blog.objects.all().count()
+        context['categories'] = BlogCategories.objects.all()
+        context['tags'] = Tags.objects.all()
+
+        all_models = list(Clothes.objects.all())
+        shuffle(all_models)
+        context['chosen_models'] = all_models[:5]
+
+        search = self.request.GET.get('search')
+        if search:
+            keywords = search.split()
+            query = Q()
+            for keyword in keywords:
+                query |= Q(name__icontains=keyword) or Q(description__icontains=keyword)
+            context['blogs'] = Blog.objects.filter(query).all()
+            context['search'] = search
+
+        category = self.request.GET.get('category')
+        if category:
+            if '-' in category:
+                splitted_category = category.split('-')
+                query = Q(category__icontains=splitted_category[0]) or Q(category__icontains=splitted_category[1])
+                selected_category = BlogCategories.objects.filter(query)
+                context['blogs'] = Blog.objects.filter(categories__in=selected_category).all()
+            else:
+                selected_category = BlogCategories.objects.filter(category__in=[str(category).title()])
+                context['blogs'] = Blog.objects.filter(categories__in=selected_category).all()
+            context['category'] = category
+
+        archive = self.request.GET.get('archive')
+        if archive:
+            month = archive.split('-')[0].title()
+            filtered_blogs = Blog.objects.filter(create_time__month=month_mapping[month]).all()
+            context['blogs'] = filtered_blogs
+            context['archive'] = archive
+        
+        tag = self.request.GET.get('tag')
+        if tag:
+            selected_tag = Tags.objects.filter(tag__icontains=tag)
+            context['blogs'] = Blog.objects.filter(tags__in=selected_tag).all()
+            context['tag'] = tag
+
+        context['archive_dates_and_counts'] = []
+        for blog in context['blogs']:
+            original_datetime_str = str(blog.create_time)
+            original_datetime = datetime.fromisoformat(original_datetime_str)
+            blog.create_time = original_datetime.strftime("%d %b %Y")
+            blog.create_time = [str(blog.create_time).split()[0], ' '.join(str(blog.create_time).split()[1:])]
+            
+            blog_month_number = month_mapping[blog.create_time[1].split()[0]]
+            blog_year = int(blog.create_time[1].split()[1])
+
+            blog_count = Blog.objects.filter(
+                Q(create_time__month=blog_month_number) &
+                Q(create_time__year=blog_year)
+            ).count()
+
+            to_append = [blog.create_time[1], blog_count]
+            if to_append not in context['archive_dates_and_counts']:
+                context['archive_dates_and_counts'].append(to_append)
+
+        return context
+
+    def get_paginate_by(self, queryset):
+        return self.paginate_by
+
+# def blog(request):
+#     blogs = Blog.objects.all()
+#     for blog in blogs:
+#         original_datetime_str = str(blog.create_time)
+#         original_datetime = datetime.fromisoformat(original_datetime_str)
+#         blog.create_time = original_datetime.strftime("%d %b %Y")
+#         blog.create_time = [str(blog.create_time).split()[0], ' '.join(str(blog.create_time).split()[1:])]
+
+#     context = {
+#         'categories': BlogCategories.objects.all(),
+#         'blogs': blogs,
+#     }
+#     print('context:', context)
+#     return render(request, 'blog.html', context)
+
 
 def blog_detail(request):
     return render(request, 'blog-detail.html')
@@ -153,12 +303,23 @@ def general_search(request):
     if userinput:
         keywords = userinput.split()
         search_query = Q()
+        # query = Q()
         for keyword in keywords:
-            search_query |= Q(name__icontains=keyword) or Q(description__icontains=keyword)
+            search_query |= Q(name__icontains=keyword) | Q(description__icontains=keyword)
+            # query |= Q(name__icontains=keyword) or  Q(description__icontains=keyword)
+
+        blogs = Blog.objects.filter(search_query)
         products = Clothes.objects.filter(search_query)
+
+        for blog in blogs:
+            original_datetime_str = str(blog.create_time)
+            original_datetime = datetime.fromisoformat(original_datetime_str)
+            blog.create_time = original_datetime.strftime("%d %b %Y")
+            blog.create_time = [str(blog.create_time).split()[0], ' '.join(str(blog.create_time).split()[1:])]
 
         context = {
             'products': products,
+            'blogs': blogs,
         }
         return render(request, 'search-results.html', context)
     return render(request, 'search-results.html')
@@ -167,45 +328,11 @@ def general_search(request):
 def product(request):
     userinput = request.GET.get('search')
     if userinput:
-        # product = Clothes.objects.filter(Q(name__icontains=userinput) | Q(description__icontains=userinput))
         keywords = userinput.split()
         search_query = Q()
         for keyword in keywords:
             search_query |= Q(name__icontains=keyword) or Q(description__icontains=keyword)
         product = Clothes.objects.filter(search_query)
-        
-        # ---------------------------------------------------------------
-        # ---------------------------------------------------------------
-        # search_terms = ' '.join(userinput.split())
-        # print('search_terms: ', search_terms)
-
-        # products = Clothes.objects.filter(active=True)
-        # product_texts = [
-        #     f"{product.name} {product.description.replace('<p>', '').replace('</p>', '').replace('<strong>', '').replace('</strong>', '').replace('<u>', '').replace('</u>', '').replace('<s>', '').replace('</s>', '')}"
-        #     for product in products
-        # ]
-        # print('product_texts: ', product_texts)
-
-        # vectorizer = CountVectorizer()
-        # product_vectors = vectorizer.fit_transform(product_texts)
-        # print('product_vectors: ', product_vectors)
-
-        # query_vector = vectorizer.transform([search_terms])
-        # print('query_vector: ', query_vector)
-
-        # print("query_vector shape: ", query_vector.shape)
-        # print("product_vectors shape: ", product_vectors.shape)
-
-        
-        # # similarity_scores = cosine_similarity(query_vector, product_vectors).flatten()
-        # similarity_scores = cosine_similarity(query_vector, product_vectors).flatten()
-        # print('similarity_scores: ', similarity_scores)
-
-        # similarity_threshold = 0.1
-
-        # relevant_indices = [index for index, score in enumerate(similarity_scores) if score > similarity_threshold]  #  if score > similarity_threshold
-
-        # product = [products[index] for index in relevant_indices]
 
     else:
         product = Clothes.objects.all()
@@ -283,9 +410,18 @@ def about(request):
 def features(request):
     products = CartProduct.objects.all() 
 
+    quantities_of_products = request.GET.getlist('num-product1')
+    if quantities_of_products:
+        for product, related_quantity in zip(products, quantities_of_products):
+            if int(product.quantity) != int(related_quantity):
+                product.quantity = int(related_quantity)
+                product.save() 
+
     context = {
         'products': products if products else None,
         'error_message': 'There are no products yet...',
     }
+    
+    print("context:", context)
     return render(request, 'shoping-cart.html', context)
 

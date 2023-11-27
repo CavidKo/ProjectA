@@ -9,7 +9,7 @@
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
-                    Free shipping for standard order over $100
+                    {% trans 'Free shipping for standard order over $100' %}
                 </div>
                 
                 <form id="languageForm" action="{% url 'set_language' %}" method="post">
@@ -17,11 +17,11 @@
                     <input type="hidden" name="next" value="{{ request.path }}">
                     <div class="right-top-bar flex-w h-full">
                         <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            Help & FAQs
+                            {% trans 'Help & FAQs' %}
                         </a>
                         
                         <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            My Account
+                            {% trans 'My Account' %}
                         </a>
                         
                         <button type="submit" name="language" value="en" style="color: rgba(240, 248, 255, 0.700);">
@@ -60,32 +60,32 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li {% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'home2' or request.resolver_match.url_name == 'home3' %} class="active-menu" {% endif %}>
-                            <a href="{% url 'home' %}">Home</a>
+                            <a href="{% url 'home' %}">{% trans 'Home' %}</a>
                             <ul class="sub-menu ctive-menu">
-                                <li><a href="{% url 'home' %}">Homepage 1</a></li>
-                                <li><a href="{% url 'home2' %}">Homepage 2</a></li>
-                                <li><a href="{% url 'home3' %}">Homepage 3</a></li>
+                                <li><a href="{% url 'home' %}">{% trans 'Homepage 1' %}</a></li>
+                                <li><a href="{% url 'home2' %}">{% trans 'Homepage 2' %}</a></li>
+                                <li><a href="{% url 'home3' %}">{% trans 'Homepage 3' %}</a></li>
                             </ul>
                         </li>
 
                         <li {% if request.resolver_match.url_name == 'shop' %} class="active-menu" {% endif %}>
-                            <a href="{% url 'shop' %}">Shop</a>
+                            <a href="{% url 'shop' %}">{% trans 'Shop' %}</a>
                         </li>
 
-                        <li class="label1{% if request.resolver_match.url_name == 'features' %} active-menu {% endif %}" data-label1="hot">
-                            <a href="{% url 'features' %}">Features</a>
+                        <li class="label1{% if request.resolver_match.url_name == 'features' %} active-menu {% endif %}" data-label1="{% trans 'hot' %}">
+                            <a href="{% url 'features' %}">{% trans 'Features' %}</a>
                         </li>
 
                         <li {% if request.resolver_match.url_name == 'blog' %} class="active-menu" {% endif %}>
-                            <a href="{% url 'blog' %}">Blog</a>
+                            <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
                         </li>
 
                         <li {% if request.resolver_match.url_name == 'about' %} class="active-menu" {% endif %}>
-                            <a href="{% url 'about' %}">About</a>
+                            <a href="{% url 'about' %}">{% trans 'About' %}</a>
                         </li>
 
                         <li {% if request.resolver_match.url_name == 'contact' %} class="active-menu" {% endif %}>
-                            <a href="{% url 'contact' %}">Contact</a>
+                            <a href="{% url 'contact' %}">{% trans 'Contact' %}</a>
                         </li>
                     </ul>
                 </div>	
@@ -154,18 +154,18 @@
         <ul class="topbar-mobile">
             <li>
                 <div class="left-top-bar">
-                    Free shipping for standard order over $100
+                    {% trans 'Free shipping for standard order over $100' %}
                 </div>
             </li>
 
             <li>
                 <div class="right-top-bar flex-w h-full">
                     <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        Help & FAQs
+                        {% trans 'Help & FAQs' %}
                     </a>
 
                     <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        My Account
+                        {% trans 'My Account' %}
                     </a>
 
                     <a href="#" class="flex-c-m p-lr-10 trans-04">
@@ -173,7 +173,7 @@
                     </a>
 
                     <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        USD
+                        AZ
                     </a>
                 </div>
             </li>
@@ -181,11 +181,11 @@
 
         <ul class="main-menu-m">
             <li>
-                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}">{% trans 'Home' %}</a>
                 <ul class="sub-menu-m">
-                    <li><a href="{% url 'home' %}">Homepage 1</a></li>
-                    <li><a href="{% url 'home2' %}">Homepage 2</a></li>
-                    <li><a href="{% url 'home3' %}">Homepage 3</a></li>
+                    <li><a href="{% url 'home' %}">{% trans 'Homepage 1' %}</a></li>
+                    <li><a href="{% url 'home2' %}">{% trans 'Homepage 2' %}</a></li>
+                    <li><a href="{% url 'home3' %}">{% trans 'Homepage 3' %}</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -193,23 +193,23 @@
             </li>
 
             <li>
-                <a href="{% url 'shop' %}">Shop</a>
+                <a href="{% url 'shop' %}">{% trans 'Shop' %}</a>
             </li>
 
             <li>
-                <a href="{% url 'features' %}" class="label1 rs1" data-label1="hot">Features</a>
+                <a href="{% url 'features' %}" class="label1 rs1" data-label1="{% trans 'hot' %}">{% trans 'Features' %}</a>
             </li>
 
             <li>
-                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
             </li>
 
             <li>
-                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'about' %}">{% trans 'About' %}</a>
             </li>
 
             <li>
-                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'contact' %}">{% trans 'Contact' %}</a>
             </li>
         </ul>
     </div>

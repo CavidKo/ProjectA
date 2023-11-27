@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 12:00+0400\n"
-"PO-Revision-Date: 2023-11-20 12:01+0400\n"
+"POT-Creation-Date: 2023-11-22 17:51+0400\n"
+"PO-Revision-Date: 2023-11-22 17:52+0400\n"
 "Last-Translator:   <cavidK@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: SalesProject/settings.py:196
+#: SalesProject/settings.py:192
 msgid "English"
 msgstr "İngiliscə"
 
-#: SalesProject/settings.py:197
+#: SalesProject/settings.py:193
 msgid "Azerbaijani"
 msgstr "Azərbaycanca"
 
-#: core/models.py:25 core/models.py:26
+#: core/models.py:25 core/models.py:26 core/templates/partials/header.html:88
+#: core/templates/partials/header.html:212
 msgid "Contact"
 msgstr "Əlaqə"
 
@@ -35,15 +36,17 @@ msgstr "Əlaqə"
 msgid "Colors"
 msgstr "Rənglər"
 
-#: core/models.py:47 core/models.py:48
+#: core/models.py:47 core/models.py:48 core/templates/blog.html:166
+#: core/templates/partials/footer.html:10
 msgid "Categories"
-msgstr "Kateqoriyalar"
+msgstr "KATEQORİYALAR"
 
 #: core/models.py:58 core/models.py:59
 msgid "Sizes"
 msgstr "Ölçülər"
 
-#: core/models.py:69 core/models.py:70
+#: core/models.py:69 core/models.py:70 core/templates/blog.html:237
+#: core/templates/index.html:455 core/templates/product.html:325
 msgid "Tags"
 msgstr "Teqlər"
 
@@ -55,7 +58,7 @@ msgstr "Modellər"
 msgid "Cart products"
 msgstr "Kart məhsulları"
 
-#: core/models.py:139
+#: core/models.py:138 core/models.py:139
 msgid "Settings"
 msgstr "Parametrlər"
 
@@ -63,34 +66,363 @@ msgstr "Parametrlər"
 msgid "Logo"
 msgstr "Loqo"
 
-#: core/templates/index.html:542
-msgid "Load More"
-msgstr "Daha çox"
+#: core/models.py:157 core/models.py:158
+msgid "Blog categories"
+msgstr "Bloq kateqoriyaları"
 
-#: core/templates/login.html:88
+#: core/models.py:174 core/models.py:175
+msgid "Blogs"
+msgstr "Bloqlar"
+
+#: core/templates/blog.html:13 core/templates/product.html:15
+#: core/templates/search-results.html:13
+msgid "Your Cart"
+msgstr "SƏNİN KARTIN"
+
+#: core/templates/blog.html:49 core/templates/index.html:50
+#: core/templates/product.html:51 core/templates/search-results.html:49
+msgid "View Cart"
+msgstr "Karta bax"
+
+#: core/templates/blog.html:53 core/templates/index.html:54
+#: core/templates/product.html:55 core/templates/search-results.html:53
+msgid "Check Out"
+msgstr "Ödəniş et"
+
+#: core/templates/blog.html:65 core/templates/partials/header.html:80
+#: core/templates/partials/header.html:204
+msgid "Blog"
+msgstr "Bloq"
+
+#: core/templates/blog.html:124 core/templates/search-results.html:150
+msgid "Continue Reading"
+msgstr "OXUMAĞA DAVAM ET"
+
+#: core/templates/blog.html:184
+msgid "Featured Products"
+msgstr "Seçilmiş Məhsullar"
+
+#: core/templates/blog.html:212
+msgid "Archive"
+msgstr "Arxiv"
+
+#: core/templates/index.html:73
+msgid "Women Collection 2023"
+msgstr "Qadın Kolleksiyası 2023"
+
+#: core/templates/index.html:79
+msgid "NEW SEASON"
+msgstr "YENİ SEZON"
+
+#: core/templates/index.html:85 core/templates/index.html:109
+#: core/templates/index.html:133 core/templates/index.html:166
+#: core/templates/index.html:191 core/templates/index.html:216
+msgid "Shop Now"
+msgstr "İNDİ AL"
+
+#: core/templates/index.html:97
+msgid "Men New-Season"
+msgstr "Kişilər Yeni Mövsüm"
+
+#: core/templates/index.html:103
+msgid "Jackets & Coats"
+msgstr "Gödəkcələr və Paltolar"
+
+#: core/templates/index.html:121
+msgid "Men Collection 2023"
+msgstr "Kişi Kolleksiyası 2023"
+
+#: core/templates/index.html:127
+msgid "New arrivals"
+msgstr "YENİ GƏLƏNLƏR"
+
+#: core/templates/index.html:156 core/templates/index.html:243
+#: core/templates/partials/footer.html:16 core/templates/product.html:75
+msgid "Women"
+msgstr "Qadın"
+
+#: core/templates/index.html:160 core/templates/index.html:185
+msgid "Spring 2023"
+msgstr "Yaz 2023"
+
+#: core/templates/index.html:181 core/templates/index.html:247
+#: core/templates/partials/footer.html:22 core/templates/product.html:79
+msgid "Men"
+msgstr "Kişi"
+
+#: core/templates/index.html:206
+msgid "Accessories"
+msgstr "Aksesuarlar"
+
+#: core/templates/index.html:210
+msgid "New Trend"
+msgstr "Yeni Trend"
+
+#: core/templates/index.html:232
+msgid "Product Overview"
+msgstr "Məhsula Baxış"
+
+#: core/templates/index.html:239 core/templates/product.html:71
+msgid "All Products"
+msgstr "Bütün Məhsullar"
+
+#: core/templates/index.html:251 core/templates/product.html:83
+msgid "Bags"
+msgstr "Çantalar"
+
+#: core/templates/index.html:255 core/templates/partials/footer.html:28
+#: core/templates/product.html:87
+msgid "Shoes"
+msgstr "Ayaqqabılar"
+
+#: core/templates/index.html:259 core/templates/partials/footer.html:34
+#: core/templates/product.html:91
+msgid "Watches"
+msgstr "Saatlar"
+
+#: core/templates/index.html:267 core/templates/product.html:124
+msgid "Filter"
+msgstr "Filtr"
+
+#: core/templates/index.html:273 core/templates/product.html:135
+msgid "Search"
+msgstr "Axtarış"
+
+#: core/templates/index.html:299 core/templates/product.html:168
+msgid "Sort By"
+msgstr "Sırala"
+
+#: core/templates/index.html:305 core/templates/product.html:173
+msgid "Default"
+msgstr "Defolt"
+
+#: core/templates/index.html:311 core/templates/product.html:176
+msgid "Popularity"
+msgstr "Populyarlıq"
+
+#: core/templates/index.html:317
+msgid "Average rating"
+msgstr "Ortalama reytinq"
+
+#: core/templates/index.html:323 core/templates/product.html:182
+msgid "Newness"
+msgstr "Yenilik"
+
+#: core/templates/index.html:329 core/templates/product.html:185
+msgid "Price: Low to High"
+msgstr "Qiymət: Ucuzdan - Bahaya"
+
+#: core/templates/index.html:335 core/templates/product.html:188
+msgid "Price: High to Low"
+msgstr "Qiymət: Bahadan - Ucuza"
+
+#: core/templates/index.html:343 core/templates/product.html:196
+msgid "Price"
+msgstr "Qiymət"
+
+#: core/templates/index.html:349 core/templates/product.html:202
+msgid "All"
+msgstr "Hamısı"
+
+#: core/templates/index.html:387 core/templates/product.html:256
+msgid "Color"
+msgstr "Rəng"
+
+#: core/templates/index.html:397 core/templates/product.html:266
+msgid "Black"
+msgstr "Qara"
+
+#: core/templates/index.html:407 core/templates/product.html:276
+msgid "Blue"
+msgstr "Göy"
+
+#: core/templates/index.html:417 core/templates/product.html:286
+msgid "Grey"
+msgstr "Boz"
+
+#: core/templates/index.html:427 core/templates/product.html:296
+msgid "Green"
+msgstr "Yaşıl"
+
+#: core/templates/index.html:437 core/templates/product.html:306
+msgid "Red"
+msgstr "Qırmızı"
+
+#: core/templates/index.html:447 core/templates/product.html:316
+msgid "White"
+msgstr "Ağ"
+
+#: core/templates/index.html:460 core/templates/product.html:330
+msgid "Fashion"
+msgstr "Moda"
+
+#: core/templates/index.html:464 core/templates/product.html:334
+msgid "Lifestyle"
+msgstr "Həyat tərzi"
+
+#: core/templates/index.html:468 core/templates/product.html:338
+msgid "Denim"
+msgstr "Denim"
+
+#: core/templates/index.html:472 core/templates/product.html:342
+msgid "Streetstyle"
+msgstr "Küçə tərzi"
+
+#: core/templates/index.html:476 core/templates/product.html:346
+msgid "Crafts"
+msgstr "Əl sənətləri"
+
+#: core/templates/index.html:493 core/templates/product.html:362
+#: core/templates/search-results.html:77
+msgid "Quick View"
+msgstr "Sürətli Baxış"
+
+#: core/templates/index.html:523
+msgid "Previous"
+msgstr "Əvvəlki"
+
+#: core/templates/index.html:535
+msgid "Next"
+msgstr "Sonrakı"
+
+#: core/templates/index.html:542 core/templates/product.html:392
+msgid "Load More"
+msgstr "Daha Çox"
+
+#: core/templates/login.html:94
 msgid "Remember me"
 msgstr "Məni xatırla"
 
-#: core/templates/login.html:89
+#: core/templates/login.html:96
 msgid "Forgot password?"
 msgstr "Parolu unutdun?"
 
-#: core/templates/login.html:93
+#: core/templates/login.html:100
 msgid "Login"
 msgstr "Giriş et"
 
-#: core/templates/login.html:98
+#: core/templates/login.html:105
 msgid "Login with Google"
 msgstr "Google-la daxil ol"
 
-#: core/templates/login.html:104
+#: core/templates/login.html:111
 msgid "Don't have an account?"
 msgstr "Hələ hesabın yoxdur?"
 
-#: core/templates/login.html:104
+#: core/templates/login.html:111 core/templates/register.html:91
 msgid "Register"
 msgstr "Qeydiyyatdan keç"
 
-#: core/templates/login.html:106
+#: core/templates/login.html:113
 msgid "Continue without login"
 msgstr "Giriş etmədən davam et"
+
+#: core/templates/partials/footer.html:42
+msgid "Help"
+msgstr "Kömək"
+
+#: core/templates/partials/footer.html:48
+msgid "Track Order"
+msgstr "Sifarişi izləyin"
+
+#: core/templates/partials/footer.html:54
+msgid "Returns"
+msgstr "Geri qaytarmalar"
+
+#: core/templates/partials/footer.html:60
+msgid "Shipping"
+msgstr "Daşınma"
+
+#: core/templates/partials/footer.html:66
+msgid "FAQs"
+msgstr "Tez-tez verilən suallar"
+
+#: core/templates/partials/footer.html:74
+msgid "GET IN TOUCH"
+msgstr "ƏLAQƏ SAXLAMAQ"
+
+#: core/templates/partials/footer.html:98
+msgid "Newsletter"
+msgstr "XƏBƏR BÜLLETENİ"
+
+#: core/templates/partials/footer.html:109
+msgid "Subscribe"
+msgstr "Abunə ol"
+
+#: core/templates/partials/header.html:12
+#: core/templates/partials/header.html:157
+msgid "Free shipping for standard order over $100"
+msgstr "$100 dollardan yuxarı standart sifarişlər üçün pulsuz çatdırılma"
+
+#: core/templates/partials/header.html:20
+#: core/templates/partials/header.html:164
+msgid "Help & FAQs"
+msgstr "Yardım və Tez-tez verilən suallar"
+
+#: core/templates/partials/header.html:24
+#: core/templates/partials/header.html:168
+msgid "My Account"
+msgstr "Mənim hesabım"
+
+#: core/templates/partials/header.html:63
+#: core/templates/partials/header.html:184
+msgid "Home"
+msgstr "Əsas menyu"
+
+#: core/templates/partials/header.html:65
+#: core/templates/partials/header.html:186
+msgid "Homepage 1"
+msgstr "Əsas menyu 1"
+
+#: core/templates/partials/header.html:66
+#: core/templates/partials/header.html:187
+msgid "Homepage 2"
+msgstr "Əsas menyu 2"
+
+#: core/templates/partials/header.html:67
+#: core/templates/partials/header.html:188
+msgid "Homepage 3"
+msgstr "Əsas menyu 3"
+
+#: core/templates/partials/header.html:72
+#: core/templates/partials/header.html:196
+msgid "Shop"
+msgstr "Mağaza"
+
+#: core/templates/partials/header.html:75
+#: core/templates/partials/header.html:200
+msgid "hot"
+msgstr "YENİ"
+
+#: core/templates/partials/header.html:76
+#: core/templates/partials/header.html:200
+msgid "Features"
+msgstr "Xüsusiyyətlər"
+
+#: core/templates/partials/header.html:84
+#: core/templates/partials/header.html:208
+msgid "About"
+msgstr "Haqqımızda"
+
+#: core/templates/product.html:129
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: core/templates/product.html:179
+msgid "Rating"
+msgstr "Reytinq"
+
+#: core/templates/register.html:59
+msgid "Sign-up"
+msgstr "Hesab yarat"
+
+#: core/templates/search-results.html:44
+msgid "Total:"
+msgstr "Ümumi:"
+
+#: core/templates/search-results.html:66
+msgid "Related contents for your search:"
+msgstr "Axtarış sözü üçün əlaqəli məzmunlar:"
+
+#~ msgid "Bag"
+#~ msgstr "Çanta"

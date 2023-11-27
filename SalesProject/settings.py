@@ -53,7 +53,8 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
+    # 'grappelli',
+    'rest_framework',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'core',
     'user',
     'ckeditor',
@@ -71,9 +73,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -147,10 +149,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
 USE_TZ = True
 
 
@@ -192,10 +190,10 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 #     },
 # }
 
-LANGUAGES = (
+LANGUAGES = [
     ('en', _('English')),
     ('az', _('Azerbaijani')),
-)
+]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 MODELTRANSLATION_LANGUAGES = ('en', 'az')

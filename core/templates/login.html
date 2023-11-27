@@ -1,5 +1,5 @@
 {%  load static %}
-{% load i18n%}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +90,9 @@
                 </div>
 
                 <div class="remember-forgot">
-                    <label"><input type="checkbox">{% trans 'Remember me' %}.</label>
+                    <label for="remember-me-checkbox">
+                        <input type="checkbox" id="remember-me-checkbox">{% trans 'Remember me' %}.
+                    </label>
                     <a href="#">{% trans 'Forgot password?' %}</a>
                     <br>
                 </div>

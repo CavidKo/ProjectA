@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 12:00+0400\n"
-"PO-Revision-Date: 2023-11-20 12:01+0400\n"
+"POT-Creation-Date: 2023-11-22 17:51+0400\n"
+"PO-Revision-Date: 2023-11-22 17:52+0400\n"
 "Last-Translator:   <cavidK@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: SalesProject/settings.py:196
+#: SalesProject/settings.py:192
 msgid "English"
 msgstr "English"
 
-#: SalesProject/settings.py:197
+#: SalesProject/settings.py:193
 msgid "Azerbaijani"
 msgstr "Azerbaijani"
 
-#: core/models.py:25 core/models.py:26
+#: core/models.py:25 core/models.py:26 core/templates/partials/header.html:88
+#: core/templates/partials/header.html:212
 msgid "Contact"
 msgstr "Contact"
 
@@ -35,7 +36,8 @@ msgstr "Contact"
 msgid "Colors"
 msgstr "Colors"
 
-#: core/models.py:47 core/models.py:48
+#: core/models.py:47 core/models.py:48 core/templates/blog.html:166
+#: core/templates/partials/footer.html:10
 msgid "Categories"
 msgstr "Categories"
 
@@ -43,7 +45,8 @@ msgstr "Categories"
 msgid "Sizes"
 msgstr "Sizes"
 
-#: core/models.py:69 core/models.py:70
+#: core/models.py:69 core/models.py:70 core/templates/blog.html:237
+#: core/templates/index.html:455 core/templates/product.html:325
 msgid "Tags"
 msgstr "Tags"
 
@@ -55,7 +58,7 @@ msgstr "Clothes"
 msgid "Cart products"
 msgstr "Cart products"
 
-#: core/models.py:139
+#: core/models.py:138 core/models.py:139
 msgid "Settings"
 msgstr "Settings"
 
@@ -63,34 +66,365 @@ msgstr "Settings"
 msgid "Logo"
 msgstr "Logo"
 
-#: core/templates/index.html:542
+#: core/models.py:157 core/models.py:158
+msgid "Blog categories"
+msgstr "Blog categories"
+
+#: core/models.py:174 core/models.py:175
+msgid "Blogs"
+msgstr "Blogs"
+
+#: core/templates/blog.html:13 core/templates/product.html:15
+#: core/templates/search-results.html:13
+msgid "Your Cart"
+msgstr "Your Cart"
+
+#: core/templates/blog.html:49 core/templates/index.html:50
+#: core/templates/product.html:51 core/templates/search-results.html:49
+msgid "View Cart"
+msgstr "View Cart"
+
+#: core/templates/blog.html:53 core/templates/index.html:54
+#: core/templates/product.html:55 core/templates/search-results.html:53
+msgid "Check Out"
+msgstr "Check Out"
+
+#: core/templates/blog.html:65 core/templates/partials/header.html:80
+#: core/templates/partials/header.html:204
+msgid "Blog"
+msgstr "Blog"
+
+#: core/templates/blog.html:124 core/templates/search-results.html:150
+msgid "Continue Reading"
+msgstr "Continue Reading"
+
+#: core/templates/blog.html:184
+msgid "Featured Products"
+msgstr "Featured Products"
+
+#: core/templates/blog.html:212
+msgid "Archive"
+msgstr "Archive"
+
+#: core/templates/index.html:73
+msgid "Women Collection 2023"
+msgstr "Women Collection 2023"
+
+#: core/templates/index.html:79
+msgid "NEW SEASON"
+msgstr "NEW SEASON"
+
+#: core/templates/index.html:85 core/templates/index.html:109
+#: core/templates/index.html:133 core/templates/index.html:166
+#: core/templates/index.html:191 core/templates/index.html:216
+msgid "Shop Now"
+msgstr "Shop Now "
+
+#: core/templates/index.html:97
+msgid "Men New-Season"
+msgstr "Men New-Season"
+
+#: core/templates/index.html:103
+msgid "Jackets & Coats"
+msgstr "Jackets & Coats"
+
+#: core/templates/index.html:121
+msgid "Men Collection 2023"
+msgstr "Men Collection 2023"
+
+#: core/templates/index.html:127
+msgid "New arrivals"
+msgstr "New arrivals"
+
+#: core/templates/index.html:156 core/templates/index.html:243
+#: core/templates/partials/footer.html:16 core/templates/product.html:75
+msgid "Women"
+msgstr "Women"
+
+#: core/templates/index.html:160 core/templates/index.html:185
+msgid "Spring 2023"
+msgstr "Spring 2023"
+
+#: core/templates/index.html:181 core/templates/index.html:247
+#: core/templates/partials/footer.html:22 core/templates/product.html:79
+msgid "Men"
+msgstr "Men"
+
+#: core/templates/index.html:206
+msgid "Accessories"
+msgstr "Accessories"
+
+#: core/templates/index.html:210
+msgid "New Trend"
+msgstr "New Trend"
+
+#: core/templates/index.html:232
+msgid "Product Overview"
+msgstr "Product Overview"
+
+#: core/templates/index.html:239 core/templates/product.html:71
+msgid "All Products"
+msgstr "All products"
+
+#: core/templates/index.html:251 core/templates/product.html:83
+msgid "Bags"
+msgstr "Bags"
+
+#: core/templates/index.html:255 core/templates/partials/footer.html:28
+#: core/templates/product.html:87
+msgid "Shoes"
+msgstr "Shoes"
+
+#: core/templates/index.html:259 core/templates/partials/footer.html:34
+#: core/templates/product.html:91
+msgid "Watches"
+msgstr "Watches"
+
+#: core/templates/index.html:267 core/templates/product.html:124
+msgid "Filter"
+msgstr "Filter"
+
+#: core/templates/index.html:273 core/templates/product.html:135
+msgid "Search"
+msgstr "Search"
+
+#: core/templates/index.html:299 core/templates/product.html:168
+msgid "Sort By"
+msgstr "Sort By"
+
+#: core/templates/index.html:305 core/templates/product.html:173
+msgid "Default"
+msgstr "Default"
+
+#: core/templates/index.html:311 core/templates/product.html:176
+msgid "Popularity"
+msgstr "Popularity"
+
+#: core/templates/index.html:317
+msgid "Average rating"
+msgstr "Average rating"
+
+#: core/templates/index.html:323 core/templates/product.html:182
+msgid "Newness"
+msgstr "Newness"
+
+#: core/templates/index.html:329 core/templates/product.html:185
+msgid "Price: Low to High"
+msgstr "Price: Low to High"
+
+#: core/templates/index.html:335 core/templates/product.html:188
+msgid "Price: High to Low"
+msgstr "Price: High to Low"
+
+#: core/templates/index.html:343 core/templates/product.html:196
+msgid "Price"
+msgstr "Price"
+
+#: core/templates/index.html:349 core/templates/product.html:202
+msgid "All"
+msgstr "All"
+
+#: core/templates/index.html:387 core/templates/product.html:256
+#, fuzzy
+#| msgid "Colors"
+msgid "Color"
+msgstr "Colors"
+
+#: core/templates/index.html:397 core/templates/product.html:266
+msgid "Black"
+msgstr "Black"
+
+#: core/templates/index.html:407 core/templates/product.html:276
+msgid "Blue"
+msgstr "Blue"
+
+#: core/templates/index.html:417 core/templates/product.html:286
+msgid "Grey"
+msgstr "Grey"
+
+#: core/templates/index.html:427 core/templates/product.html:296
+msgid "Green"
+msgstr "Green"
+
+#: core/templates/index.html:437 core/templates/product.html:306
+msgid "Red"
+msgstr "Red"
+
+#: core/templates/index.html:447 core/templates/product.html:316
+msgid "White"
+msgstr "White"
+
+#: core/templates/index.html:460 core/templates/product.html:330
+msgid "Fashion"
+msgstr "Fashion"
+
+#: core/templates/index.html:464 core/templates/product.html:334
+msgid "Lifestyle"
+msgstr "Lifestyle"
+
+#: core/templates/index.html:468 core/templates/product.html:338
+msgid "Denim"
+msgstr "Denim"
+
+#: core/templates/index.html:472 core/templates/product.html:342
+msgid "Streetstyle"
+msgstr "Streetstyle"
+
+#: core/templates/index.html:476 core/templates/product.html:346
+msgid "Crafts"
+msgstr "Crafts"
+
+#: core/templates/index.html:493 core/templates/product.html:362
+#: core/templates/search-results.html:77
+msgid "Quick View"
+msgstr "Quick View"
+
+#: core/templates/index.html:523
+msgid "Previous"
+msgstr "Previous"
+
+#: core/templates/index.html:535
+msgid "Next"
+msgstr "Next"
+
+#: core/templates/index.html:542 core/templates/product.html:392
 msgid "Load More"
 msgstr "Load More"
 
-#: core/templates/login.html:88
+#: core/templates/login.html:94
 msgid "Remember me"
 msgstr "Remember me"
 
-#: core/templates/login.html:89
+#: core/templates/login.html:96
 msgid "Forgot password?"
 msgstr "Forgot password?"
 
-#: core/templates/login.html:93
+#: core/templates/login.html:100
 msgid "Login"
 msgstr "Login"
 
-#: core/templates/login.html:98
+#: core/templates/login.html:105
 msgid "Login with Google"
 msgstr "Login with Google"
 
-#: core/templates/login.html:104
+#: core/templates/login.html:111
 msgid "Don't have an account?"
 msgstr "Don't have an account?"
 
-#: core/templates/login.html:104
+#: core/templates/login.html:111 core/templates/register.html:91
 msgid "Register"
 msgstr "Register"
 
-#: core/templates/login.html:106
+#: core/templates/login.html:113
 msgid "Continue without login"
 msgstr "Continue without login"
+
+#: core/templates/partials/footer.html:42
+msgid "Help"
+msgstr "Help"
+
+#: core/templates/partials/footer.html:48
+msgid "Track Order"
+msgstr "Track Order"
+
+#: core/templates/partials/footer.html:54
+msgid "Returns"
+msgstr "Returns"
+
+#: core/templates/partials/footer.html:60
+msgid "Shipping"
+msgstr "Shipping"
+
+#: core/templates/partials/footer.html:66
+msgid "FAQs"
+msgstr "FAQs"
+
+#: core/templates/partials/footer.html:74
+msgid "GET IN TOUCH"
+msgstr "GET IN TOUCH"
+
+#: core/templates/partials/footer.html:98
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: core/templates/partials/footer.html:109
+msgid "Subscribe"
+msgstr "Subscribe"
+
+#: core/templates/partials/header.html:12
+#: core/templates/partials/header.html:157
+msgid "Free shipping for standard order over $100"
+msgstr "Free shipping for standard order over $100"
+
+#: core/templates/partials/header.html:20
+#: core/templates/partials/header.html:164
+msgid "Help & FAQs"
+msgstr "Help & FAQs"
+
+#: core/templates/partials/header.html:24
+#: core/templates/partials/header.html:168
+msgid "My Account"
+msgstr "My Account"
+
+#: core/templates/partials/header.html:63
+#: core/templates/partials/header.html:184
+msgid "Home"
+msgstr "Home"
+
+#: core/templates/partials/header.html:65
+#: core/templates/partials/header.html:186
+msgid "Homepage 1"
+msgstr "Homepage 1"
+
+#: core/templates/partials/header.html:66
+#: core/templates/partials/header.html:187
+msgid "Homepage 2"
+msgstr "Homepage 2"
+
+#: core/templates/partials/header.html:67
+#: core/templates/partials/header.html:188
+msgid "Homepage 3"
+msgstr "Homepage 3"
+
+#: core/templates/partials/header.html:72
+#: core/templates/partials/header.html:196
+msgid "Shop"
+msgstr "Shop"
+
+#: core/templates/partials/header.html:75
+#: core/templates/partials/header.html:200
+msgid "hot"
+msgstr "hot"
+
+#: core/templates/partials/header.html:76
+#: core/templates/partials/header.html:200
+msgid "Features"
+msgstr "Features"
+
+#: core/templates/partials/header.html:84
+#: core/templates/partials/header.html:208
+msgid "About"
+msgstr " About "
+
+#: core/templates/product.html:129
+msgid "Reset"
+msgstr "Reset"
+
+#: core/templates/product.html:179
+msgid "Rating"
+msgstr "Rating"
+
+#: core/templates/register.html:59
+msgid "Sign-up"
+msgstr "Sign-up"
+
+#: core/templates/search-results.html:44
+msgid "Total:"
+msgstr "Total:"
+
+#: core/templates/search-results.html:66
+msgid "Related contents for your search:"
+msgstr "Related contents for your search:"
+
+#~ msgid "Bag"
+#~ msgstr "Bag"

@@ -74,7 +74,7 @@ class Clothes(BaseModel):
     name = models.CharField(max_length=50)
     price = models.FloatField(null=True)
     description = RichTextField()
-    image = models.ImageField(upload_to='media/', null=True, blank=True)
+    image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
     added_to_whishlist = models.BooleanField(default=False)
     # color = models.ForeignKey(Colors, on_delete=models.CASCADE, null=True)
     # size = models.ForeignKey(Sizes, on_delete=models.CASCADE, null=True)
@@ -99,7 +99,7 @@ class Clothes(BaseModel):
         super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return self.name
+        return self.description
     
     class Meta:
         verbose_name_plural = _('Clothes')
@@ -135,7 +135,7 @@ class Settings(BaseModel):
     info = models.CharField(max_length=500, null=True)
 
     class Meta:
-        verbose_name_plural = 'Settings'
+        verbose_name_plural = _('Settings')
         verbose_name = _('Settings')
 
 
@@ -145,4 +145,31 @@ class Logo(BaseModel):
     class Meta:
         verbose_name_plural = _('Logo')
         verbose_name = _('Logo')
+
+
+class BlogCategories(BaseModel):
+    category = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.category
     
+    class Meta:
+        verbose_name_plural = _('Blog categories')
+        verbose_name = _('Blog categories')
+
+
+class Blog(BaseModel):
+    name = models.CharField(max_length=150, null=True)
+    description = RichTextField()
+    author = models.CharField(max_length=150, null=True)
+    categories = models.ManyToManyField(BlogCategories)
+    tags = models.ManyToManyField(Tags)
+    comment_count = models.IntegerField(null=True)
+    image = models.ImageField(upload_to='media/blog_images/', null=True)
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = _('Blogs')
+        verbose_name = _('Blogs')
