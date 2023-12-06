@@ -215,6 +215,108 @@
 <!--===============================================================================================-->	
 <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
+<script>
+    function changeProductCountInCart(productName, productPrice, productImageUrl, productSlug, sumProducts) {
+        var iconElement = document.getElementById("shopping-cart-icon");
+        iconElement.dataset.notify = parseInt(iconElement.dataset.notify) + 1;
+
+        var tagInput = document.getElementById("num-product2")
+
+        var newProduct = {
+            product: {
+                image: {
+                    url: productImageUrl
+                },
+                name: productName,
+                price: productPrice,
+                slug: productSlug
+            },
+            quantity: tagInput.value
+        };
+        
+        var cartList = document.getElementById('cart-list');
+
+        var newItem = document.createElement('li');
+        newItem.className = 'header-cart-item flex-w flex-t m-b-12';
+        newItem.innerHTML = `
+            <div class="header-cart-item-img">
+                <img src="${newProduct.product.image.url}" alt="IMG">
+            </div>
+            <div class="header-cart-item-txt p-t-8">
+                <a href=""/cozastore/product/${newProduct.product.slug}/" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                    ${newProduct.product.name}
+                </a>
+                <span class="header-cart-item-info">
+                    ${newProduct.quantity} x $${newProduct.product.price}
+                </span>
+            </div>
+        `;
+        cartList.appendChild(newItem);
+
+        var newSumProducts = parseFloat(sumProducts.replace(',', '.')) + (parseFloat(productPrice.replace(',', '.')) * parseInt(tagInput.value));
+
+        var divSum = document.getElementById('sum-products-in-side-cart');
+        divSum.textContent = "Total: $" + `${newSumProducts}`
+    }
+</script>
+<!--===============================================================================================-->
+<script>
+    function setButtonClicked(buttonName) {
+        document.getElementById('button_clicked').value = buttonName;
+    }
+</script>
+<!--===============================================================================================-->
+<script>
+    function decreaseValueProductDetail() {
+        var inputElement = document.getElementById("num-product2");
+        var currentValue = parseInt(inputElement.value);
+        
+        if (currentValue > 0) {
+            inputElement.value = --currentValue;
+        }
+    }
+    
+    function increaseValueProductDetail() {
+        var inputElement = document.getElementById("num-product2");
+        var currentValue= parseInt(inputElement.value);
+        
+        inputElement.value = ++currentValue;
+    }
+</script>
+<!--===============================================================================================-->
+<script>
+    function increaseValue(oldValue, id) {
+        var inputElement = document.getElementById(`num-product${id}`);
+        var currentValue = parseInt(inputElement.value);
+        
+        inputElement.value = ++currentValue;
+        if (inputElement.value > oldValue ) {
+            inputElement.style.color = "blue";
+        } else if (inputElement.value < oldValue) {
+            inputElement.style.color = "red";
+        } else {
+            inputElement.style.color = "";
+        }
+    }
+
+    function decreaseValue(oldValue, id) {
+        var inputElement = document.getElementById(`num-product${id}`);
+        var currentValue = parseInt(inputElement.value);
+
+        if (currentValue > 0) {
+            inputElement.value = --currentValue;
+
+            if (inputElement.value < oldValue) {
+                inputElement.style.color = "red";
+            } else if (inputElement.value > oldValue) {
+                inputElement.style.color = "blue";
+            } else {
+                inputElement.style.color = ""; 
+            }
+        }
+    }
+</script> 
+<!--===============================================================================================-->
 <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
 <!--===============================================================================================-->
 <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
@@ -267,7 +369,7 @@
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function(){
             swal(nameProduct, "is added to wishlist !", "success");
-
+            
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
         });

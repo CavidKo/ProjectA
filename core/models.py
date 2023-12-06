@@ -99,7 +99,7 @@ class Clothes(BaseModel):
         super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return self.description
+        return self.name
     
     class Meta:
         verbose_name_plural = _('Clothes')
@@ -111,10 +111,11 @@ class CartProduct(BaseModel):
     quantity = models.PositiveIntegerField(default=1, null=True)
     size = models.CharField(max_length=10, null=True)
     color = models.CharField(max_length=10, null=True)
+    active = models.BooleanField(default=True)
     overall_sum = models.FloatField(null=True)
 
     def save(self, *args, **kwargs):
-        self.overall_sum = float(self.quantity) * self.product.price
+        self.overall_sum = round(int(self.quantity) * self.product.price, 2)
         super().save(*args, **kwargs)
 
     def __str__(self) -> str:

@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'user',
     'ckeditor',
     'social_django',
+    'django_celery_beat',
     'rosetta',
 ]
 
@@ -205,3 +206,20 @@ LOCALE_PATHS = (
 TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
+
+
+
+# For celery
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Baku'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sultan.sadatov.2018@gmail.com'
+EMAIL_HOST_PASSWORD = 'grbdasbvjtszeslb'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

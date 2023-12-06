@@ -20,4 +20,3 @@ def filter_(any_string: str):
 def multiply_(price, quantity):
     return price * quantity
 
-

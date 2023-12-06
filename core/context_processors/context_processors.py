@@ -2,7 +2,7 @@ from core.models import *
 
 
 def settings(request):
-    cart_products = CartProduct.objects.all()
+    cart_products = CartProduct.objects.filter(active=True)
     sum_ = 0
 
     if cart_products:
@@ -13,7 +13,7 @@ def settings(request):
         'footer_info': Settings.objects.first(),
         'logo': Logo.objects.first(),
         'cart_products': cart_products,
-        'sum_': round(sum_, 2),
+        'sum_': round(sum_, 2) if sum_ != 0 else 0,
         'cart_products_count': cart_products.count()
     }
     
