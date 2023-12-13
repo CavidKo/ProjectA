@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-22 17:51+0400\n"
-"PO-Revision-Date: 2023-11-22 17:52+0400\n"
+"POT-Creation-Date: 2023-12-11 12:13+0400\n"
+"PO-Revision-Date: 2023-12-11 17:14+0400\n"
 "Last-Translator:   <cavidK@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: SalesProject/settings.py:192
+#: SalesProject/settings.py:197
 msgid "English"
 msgstr "English"
 
-#: SalesProject/settings.py:193
+#: SalesProject/settings.py:198
 msgid "Azerbaijani"
 msgstr "Azerbaijani"
 
-#: core/models.py:25 core/models.py:26 core/templates/partials/header.html:88
+#: core/admin.py:79
+msgid "By date"
+msgstr ""
+
+#: core/models.py:25 core/models.py:26 core/templates/contact.html:65
+#: core/templates/partials/header.html:88
 #: core/templates/partials/header.html:212
 msgid "Contact"
 msgstr "Contact"
@@ -36,8 +41,8 @@ msgstr "Contact"
 msgid "Colors"
 msgstr "Colors"
 
-#: core/models.py:47 core/models.py:48 core/templates/blog.html:166
-#: core/templates/partials/footer.html:10
+#: core/models.py:47 core/models.py:48 core/templates/blog-detail.html:207
+#: core/templates/blog.html:166 core/templates/partials/footer.html:10
 msgid "Categories"
 msgstr "Categories"
 
@@ -45,66 +50,138 @@ msgstr "Categories"
 msgid "Sizes"
 msgstr "Sizes"
 
-#: core/models.py:69 core/models.py:70 core/templates/blog.html:237
-#: core/templates/index.html:455 core/templates/product.html:325
+#: core/models.py:69 core/models.py:70 core/templates/blog-detail.html:279
+#: core/templates/blog.html:237 core/templates/index.html:460
+#: core/templates/product.html:325
 msgid "Tags"
 msgstr "Tags"
 
-#: core/models.py:105 core/models.py:106
+#: core/models.py:103 core/models.py:104
 msgid "Clothes"
 msgstr "Clothes"
 
-#: core/models.py:124 core/models.py:125
+#: core/models.py:123 core/models.py:124
 msgid "Cart products"
 msgstr "Cart products"
 
-#: core/models.py:138 core/models.py:139
+#: core/models.py:137 core/models.py:138
 msgid "Settings"
 msgstr "Settings"
 
-#: core/models.py:146 core/models.py:147
+#: core/models.py:145 core/models.py:146
 msgid "Logo"
 msgstr "Logo"
 
-#: core/models.py:157 core/models.py:158
+#: core/models.py:156 core/models.py:157
 msgid "Blog categories"
 msgstr "Blog categories"
 
-#: core/models.py:174 core/models.py:175
+#: core/models.py:173 core/models.py:174
 msgid "Blogs"
 msgstr "Blogs"
 
-#: core/templates/blog.html:13 core/templates/product.html:15
-#: core/templates/search-results.html:13
+#: core/models.py:188 core/models.py:189 core/templates/about.html:66
+#: core/templates/partials/header.html:84
+#: core/templates/partials/header.html:208
+msgid "About"
+msgstr " About "
+
+#: core/templates/about.html:13 core/templates/blog-detail.html:14
+#: core/templates/blog.html:13 core/templates/contact.html:13
+#: core/templates/index.html:14 core/templates/product-detail.html:14
+#: core/templates/product.html:15 core/templates/search-results.html:13
+#: core/templates/shoping-cart.html:15
 msgid "Your Cart"
 msgstr "Your Cart"
 
-#: core/templates/blog.html:49 core/templates/index.html:50
+#: core/templates/about.html:44 core/templates/contact.html:44
+#: core/templates/index.html:45 core/templates/product-detail.html:45
+#: core/templates/shoping-cart.html:46 core/templates/shoping-cart.html:93
+#: core/templates/shoping-cart.html:222
+msgid "Total"
+msgstr "Total:"
+
+#: core/templates/about.html:49 core/templates/blog-detail.html:50
+#: core/templates/blog.html:49 core/templates/contact.html:49
+#: core/templates/index.html:50 core/templates/product-detail.html:50
 #: core/templates/product.html:51 core/templates/search-results.html:49
+#: core/templates/shoping-cart.html:51
 msgid "View Cart"
 msgstr "View Cart"
 
-#: core/templates/blog.html:53 core/templates/index.html:54
+#: core/templates/about.html:53 core/templates/blog-detail.html:54
+#: core/templates/blog.html:53 core/templates/contact.html:53
+#: core/templates/index.html:54 core/templates/product-detail.html:54
 #: core/templates/product.html:55 core/templates/search-results.html:53
+#: core/templates/shoping-cart.html:55
 msgid "Check Out"
 msgstr "Check Out"
 
-#: core/templates/blog.html:65 core/templates/partials/header.html:80
+#: core/templates/about.html:80
+msgid "Our Story"
+msgstr "Our Story"
+
+#: core/templates/about.html:102
+msgid "Our Mission"
+msgstr "Our Mission"
+
+#: core/templates/about.html:111
+msgid ""
+"Creativity is just connecting things. When you ask creative people how they "
+"did something, they feel a little guilty because they did not really do it, "
+"they just saw something. It seemed obvious to them after a while."
+msgstr ""
+"Creativity is just connecting things. When you ask creative people how they "
+"did something, they feel a little guilty because they didn't really do it, "
+"they just saw something. It seemed obvious to them after a while."
+
+#: core/templates/about.html:115
+msgid "Steve Jobs"
+msgstr "Steve Jobs"
+
+#: core/templates/blog-detail.html:67 core/templates/partials/header.html:63
+#: core/templates/partials/header.html:184
+#: core/templates/product-detail.html:67 core/templates/shoping-cart.html:68
+msgid "Home"
+msgstr "Home"
+
+#: core/templates/blog-detail.html:72 core/templates/blog.html:65
+#: core/templates/partials/header.html:80
 #: core/templates/partials/header.html:204
 msgid "Blog"
 msgstr "Blog"
+
+#: core/templates/blog-detail.html:226 core/templates/blog.html:184
+msgid "Featured Products"
+msgstr "Featured Products"
+
+#: core/templates/blog-detail.html:254 core/templates/blog.html:212
+msgid "Archive"
+msgstr "Archive"
 
 #: core/templates/blog.html:124 core/templates/search-results.html:150
 msgid "Continue Reading"
 msgstr "Continue Reading"
 
-#: core/templates/blog.html:184
-msgid "Featured Products"
-msgstr "Featured Products"
+#: core/templates/contact.html:83
+msgid "Send Us A Message"
+msgstr "Send Us A Message"
 
-#: core/templates/blog.html:212
-msgid "Archive"
-msgstr "Archive"
+#: core/templates/contact.html:96 core/templates/product-detail.html:403
+msgid "Submit"
+msgstr "Submit"
+
+#: core/templates/contact.html:109
+msgid "Address"
+msgstr "Address"
+
+#: core/templates/contact.html:125
+msgid "Lets Talk"
+msgstr "Lets Talk"
+
+#: core/templates/contact.html:141
+msgid "Sale Support"
+msgstr "Sale Support"
 
 #: core/templates/index.html:73
 msgid "Women Collection 2023"
@@ -184,110 +261,116 @@ msgstr "Watches"
 msgid "Filter"
 msgstr "Filter"
 
-#: core/templates/index.html:273 core/templates/product.html:135
+#: core/templates/index.html:272 core/templates/product.html:129
+msgid "Reset"
+msgstr "Reset"
+
+#: core/templates/index.html:278 core/templates/product.html:135
 msgid "Search"
 msgstr "Search"
 
-#: core/templates/index.html:299 core/templates/product.html:168
+#: core/templates/index.html:304 core/templates/product.html:168
 msgid "Sort By"
 msgstr "Sort By"
 
-#: core/templates/index.html:305 core/templates/product.html:173
+#: core/templates/index.html:310 core/templates/product.html:173
 msgid "Default"
 msgstr "Default"
 
-#: core/templates/index.html:311 core/templates/product.html:176
+#: core/templates/index.html:316 core/templates/product.html:176
 msgid "Popularity"
 msgstr "Popularity"
 
-#: core/templates/index.html:317
+#: core/templates/index.html:322
 msgid "Average rating"
 msgstr "Average rating"
 
-#: core/templates/index.html:323 core/templates/product.html:182
+#: core/templates/index.html:328 core/templates/product.html:182
 msgid "Newness"
 msgstr "Newness"
 
-#: core/templates/index.html:329 core/templates/product.html:185
+#: core/templates/index.html:334 core/templates/product.html:185
 msgid "Price: Low to High"
 msgstr "Price: Low to High"
 
-#: core/templates/index.html:335 core/templates/product.html:188
+#: core/templates/index.html:340 core/templates/product.html:188
 msgid "Price: High to Low"
 msgstr "Price: High to Low"
 
-#: core/templates/index.html:343 core/templates/product.html:196
+#: core/templates/index.html:348 core/templates/product.html:196
+#: core/templates/shoping-cart.html:91
 msgid "Price"
 msgstr "Price"
 
-#: core/templates/index.html:349 core/templates/product.html:202
+#: core/templates/index.html:354 core/templates/product.html:202
 msgid "All"
 msgstr "All"
 
-#: core/templates/index.html:387 core/templates/product.html:256
+#: core/templates/index.html:392 core/templates/product-detail.html:169
+#: core/templates/product-detail.html:300 core/templates/product.html:256
 #, fuzzy
 #| msgid "Colors"
 msgid "Color"
 msgstr "Colors"
 
-#: core/templates/index.html:397 core/templates/product.html:266
+#: core/templates/index.html:402 core/templates/product.html:266
 msgid "Black"
 msgstr "Black"
 
-#: core/templates/index.html:407 core/templates/product.html:276
+#: core/templates/index.html:412 core/templates/product.html:276
 msgid "Blue"
 msgstr "Blue"
 
-#: core/templates/index.html:417 core/templates/product.html:286
+#: core/templates/index.html:422 core/templates/product.html:286
 msgid "Grey"
 msgstr "Grey"
 
-#: core/templates/index.html:427 core/templates/product.html:296
+#: core/templates/index.html:432 core/templates/product.html:296
 msgid "Green"
 msgstr "Green"
 
-#: core/templates/index.html:437 core/templates/product.html:306
+#: core/templates/index.html:442 core/templates/product.html:306
 msgid "Red"
 msgstr "Red"
 
-#: core/templates/index.html:447 core/templates/product.html:316
+#: core/templates/index.html:452 core/templates/product.html:316
 msgid "White"
 msgstr "White"
 
-#: core/templates/index.html:460 core/templates/product.html:330
+#: core/templates/index.html:465 core/templates/product.html:330
 msgid "Fashion"
 msgstr "Fashion"
 
-#: core/templates/index.html:464 core/templates/product.html:334
+#: core/templates/index.html:469 core/templates/product.html:334
 msgid "Lifestyle"
 msgstr "Lifestyle"
 
-#: core/templates/index.html:468 core/templates/product.html:338
+#: core/templates/index.html:473 core/templates/product.html:338
 msgid "Denim"
 msgstr "Denim"
 
-#: core/templates/index.html:472 core/templates/product.html:342
+#: core/templates/index.html:477 core/templates/product.html:342
 msgid "Streetstyle"
 msgstr "Streetstyle"
 
-#: core/templates/index.html:476 core/templates/product.html:346
+#: core/templates/index.html:481 core/templates/product.html:346
 msgid "Crafts"
 msgstr "Crafts"
 
-#: core/templates/index.html:493 core/templates/product.html:362
+#: core/templates/index.html:498 core/templates/product.html:362
 #: core/templates/search-results.html:77
 msgid "Quick View"
 msgstr "Quick View"
 
-#: core/templates/index.html:523
+#: core/templates/index.html:536
 msgid "Previous"
 msgstr "Previous"
 
-#: core/templates/index.html:535
+#: core/templates/index.html:548
 msgid "Next"
 msgstr "Next"
 
-#: core/templates/index.html:542 core/templates/product.html:392
+#: core/templates/index.html:556 core/templates/product.html:393
 msgid "Load More"
 msgstr "Load More"
 
@@ -331,7 +414,7 @@ msgstr "Track Order"
 msgid "Returns"
 msgstr "Returns"
 
-#: core/templates/partials/footer.html:60
+#: core/templates/partials/footer.html:60 core/templates/shoping-cart.html:175
 msgid "Shipping"
 msgstr "Shipping"
 
@@ -366,11 +449,6 @@ msgstr "Help & FAQs"
 msgid "My Account"
 msgstr "My Account"
 
-#: core/templates/partials/header.html:63
-#: core/templates/partials/header.html:184
-msgid "Home"
-msgstr "Home"
-
 #: core/templates/partials/header.html:65
 #: core/templates/partials/header.html:186
 msgid "Homepage 1"
@@ -401,14 +479,66 @@ msgstr "hot"
 msgid "Features"
 msgstr "Features"
 
-#: core/templates/partials/header.html:84
-#: core/templates/partials/header.html:208
-msgid "About"
-msgstr " About "
+#: core/templates/product-detail.html:148
+#: core/templates/product-detail.html:313
+#, fuzzy
+#| msgid "Sizes"
+msgid "Size"
+msgstr "Sizes"
 
-#: core/templates/product.html:129
-msgid "Reset"
-msgstr "Reset"
+#: core/templates/product-detail.html:203
+msgid "Add to cart"
+msgstr "Add to cart"
+
+#: core/templates/product-detail.html:240
+msgid "Description"
+msgstr "Description"
+
+#: core/templates/product-detail.html:244
+msgid "Additional information"
+msgstr "Additional information"
+
+#: core/templates/product-detail.html:248
+msgid "Reviews"
+msgstr "Reviews"
+
+#: core/templates/product-detail.html:270
+msgid "Weight"
+msgstr "Weight"
+
+#: core/templates/product-detail.html:280
+msgid "Dimensions"
+msgstr "Dimensions"
+
+#: core/templates/product-detail.html:290
+msgid "Materials"
+msgstr "Materials"
+
+#: core/templates/product-detail.html:363
+msgid "Add a review"
+msgstr "Add a review"
+
+#: core/templates/product-detail.html:367
+msgid "Your email address will not be published. Required fields are marked"
+msgstr "Your email address will not be published. Required fields are marked"
+
+#: core/templates/product-detail.html:372
+#, fuzzy
+#| msgid "Rating"
+msgid "Your Rating"
+msgstr "Rating"
+
+#: core/templates/product-detail.html:421
+#, fuzzy
+#| msgid "Categories"
+msgid "Category"
+msgstr "Categories"
+
+#: core/templates/product-detail.html:432
+#, fuzzy
+#| msgid "Featured Products"
+msgid "Related Products"
+msgstr "Featured Products"
 
 #: core/templates/product.html:179
 msgid "Rating"
@@ -425,6 +555,86 @@ msgstr "Total:"
 #: core/templates/search-results.html:66
 msgid "Related contents for your search:"
 msgstr "Related contents for your search:"
+
+#: core/templates/shoping-cart.html:73
+#, fuzzy
+#| msgid "Shipping"
+msgid "Shoping Cart"
+msgstr "Shipping"
+
+#: core/templates/shoping-cart.html:89
+#, fuzzy
+#| msgid "All Products"
+msgid "Product"
+msgstr "All products"
+
+#: core/templates/shoping-cart.html:92
+msgid "Quantity"
+msgstr "Quantity"
+
+#: core/templates/shoping-cart.html:140
+msgid "Apply coupon"
+msgstr "Apply coupon"
+
+#: core/templates/shoping-cart.html:145
+msgid "Update Cart"
+msgstr "Update Cart"
+
+#: core/templates/shoping-cart.html:155
+#, fuzzy
+#| msgid "Cart products"
+msgid "Cart Totals"
+msgstr "Cart products"
+
+#: core/templates/shoping-cart.html:161
+#, fuzzy
+#| msgid "Total:"
+msgid "Subtotal"
+msgstr "Total:"
+
+#: core/templates/shoping-cart.html:181
+msgid ""
+"There are no shipping methods available. Please double check your address, "
+"or contact us if you need any help"
+msgstr ""
+"There are no shipping methods available. Please double check your address, "
+"or contact us if you need any help"
+
+#: core/templates/shoping-cart.html:186
+#, fuzzy
+#| msgid "Shipping"
+msgid "Calculate Shipping"
+msgstr "Shipping"
+
+#: core/templates/shoping-cart.html:191
+msgid "Select a country..."
+msgstr "Select a country..."
+
+#: core/templates/shoping-cart.html:192
+msgid "USA"
+msgstr "USA"
+
+#: core/templates/shoping-cart.html:193
+msgid "UK"
+msgstr "UK"
+
+#: core/templates/shoping-cart.html:199
+#, fuzzy
+#| msgid "Select a country..."
+msgid "State /  country"
+msgstr "Select a country..."
+
+#: core/templates/shoping-cart.html:206
+msgid "Postcode / Zip"
+msgstr ""
+
+#: core/templates/shoping-cart.html:211
+msgid "Update Totals"
+msgstr "Update Totals"
+
+#: core/templates/shoping-cart.html:234
+msgid "Proceed to Checkout"
+msgstr "Proceed to Checkout"
 
 #~ msgid "Bag"
 #~ msgstr "Bag"

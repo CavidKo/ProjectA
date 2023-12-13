@@ -11,3 +11,5 @@ class MyUser(AbstractUser):
     picture = models.ImageField(upload_to='users', blank=True)
 
     
+
+    

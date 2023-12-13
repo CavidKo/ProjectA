@@ -69,9 +69,15 @@ INSTALLED_APPS = [
     'social_django',
     'django_celery_beat',
     'rosetta',
+    'import_export',
+    'rangefilter',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -223,3 +229,12 @@ EMAIL_HOST_USER = 'sultan.sadatov.2018@gmail.com'
 EMAIL_HOST_PASSWORD = 'grbdasbvjtszeslb'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+# django-cors-headers
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]

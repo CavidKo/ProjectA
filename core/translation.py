@@ -8,28 +8,28 @@ class ClothesTranslationOptions(TranslationOptions):
 translator.register(Clothes, ClothesTranslationOptions)
 
 
-# class CategoriesTranslationOptions(TranslationOptions):
-#     fields = ('category',)
+class CategoriesTranslationOptions(TranslationOptions):
+    fields = ('category',)
 
-# translator.register(Categories, CategoriesTranslationOptions)
-
-
-# class ColorsTranslationOptions(TranslationOptions):
-#     fields = ('color',)
-
-# translator.register(Colors, ColorsTranslationOptions)
+translator.register(Categories, CategoriesTranslationOptions)
 
 
-# class TagsTranslationOptions(TranslationOptions):
-#     fields = ('tag',)
+class ColorsTranslationOptions(TranslationOptions):
+    fields = ('color',)
 
-# translator.register(Tags, TagsTranslationOptions)
+translator.register(Colors, ColorsTranslationOptions)
 
 
-# class SizesTranslationOptions(TranslationOptions):
-#     fields = ('size',)
+class TagsTranslationOptions(TranslationOptions):
+    fields = ('tag',)
 
-# translator.register(Sizes, SizesTranslationOptions)
+translator.register(Tags, TagsTranslationOptions)
+
+
+class SizesTranslationOptions(TranslationOptions):
+    fields = ('size',)
+
+translator.register(Sizes, SizesTranslationOptions)
 
 
 class BlogTranslationOptions(TranslationOptions):
@@ -38,10 +38,10 @@ class BlogTranslationOptions(TranslationOptions):
 translator.register(Blog, BlogTranslationOptions)
 
 
-# class BlogCategoriesTranslationoptions(TranslationOptions):
-#     fields = ('category',)
+class BlogCategoriesTranslationoptions(TranslationOptions):
+        fields = ('category',)
 
-# translator.register(BlogCategories, BlogCategoriesTranslationoptions)
+translator.register(BlogCategories, BlogCategoriesTranslationoptions)
 
 
 class SettingsTranslationOptions(TranslationOptions):
@@ -50,6 +50,13 @@ class SettingsTranslationOptions(TranslationOptions):
 translator.register(Settings, SettingsTranslationOptions)
 
 
+class AboutTranslationOptions(TranslationOptions):
+    fields = ('our_story_text', 'our_mission_text')
+
+translator.register(About, AboutTranslationOptions)
 
 
+class CartProductsTranslationOptions(TranslationOptions):
+    fields = ('size', 'color')
 
+translator.register(CartProduct, CartProductsTranslationOptions)

@@ -18,5 +18,7 @@ urlpatterns = [
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add-to-cart'),
     path('update-quantity/<int:product_id>/<str:quantity>/', update_quantity, name='update-quantity'),
     path('blog-detail/<int:id_>/', blog_detail, name='blog-detail'),
-    path('general-search/', general_search, name='general-search')
+    path('general-search/', general_search, name='general-search'),
+    path('change_wish/<int:product_id>/', change_whish, name='change-wish'),
+    path('add_review/<int:product_id>/', add_review, name='add-review')
 ]

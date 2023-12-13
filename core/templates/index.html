@@ -11,7 +11,7 @@
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
-					Your Cart
+					{% trans 'Your Cart' %}
 				</span>
 
 				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -27,9 +27,9 @@
 							<img src="{{ product.product.image.url }}" alt="IMG">
 						</div>
 
-						<div class="header-cart-item-txt p-t-8">
+						<div class="header-cart-item-txt ">  <!--p-t-8-->
 							<a href="{% url 'single-product' product.product.slug %}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								{{ product.product.name }}
+								{{ product.product.name }} <br> {{ product.color }} | {{ product.size }}
 							</a>
 
 							<span class="header-cart-item-info">
@@ -42,7 +42,7 @@
 				
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: ${{ sum_ }}
+						{% trans 'Total' %}: ${{ sum_ }}
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
@@ -498,7 +498,7 @@
 									{% trans 'Quick View' %}
 								</a>
 							</div>
-
+							
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="{% url 'single-product' i.slug %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
@@ -509,13 +509,21 @@
 										${{ i.price }}
 									</span>
 								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04" src="{% static 'images/icons/icon-heart-01.png' %}" alt="ICON">
-										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{% static 'images/icons/icon-heart-02.png' %}" alt="ICON">
-									</a>
-								</div>
+								{% if i.added_to_whishlist == False %}
+									<div class="block2-txt-child2 flex-r p-t-3">
+										<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="addwish({{ i.id }})">
+											<img class="icon-heart1 dis-block trans-04" src="{% static 'images/icons/icon-heart-01.png' %}" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{% static 'images/icons/icon-heart-02.png' %}" alt="ICON">
+										</a>
+									</div>
+								{% else %}
+									<div class="block2-txt-child2 flex-r p-t-3">
+										<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 js-addedwish-b2" onclick="addwish({{ i.id }})">
+											<img class="icon-heart1 dis-block trans-04" src="{% static 'images/icons/icon-heart-01.png' %}" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{% static 'images/icons/icon-heart-02.png' %}" alt="ICON">
+										</a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -551,5 +559,42 @@
 			</div>
 		</div>
 	</section>
+
+
+	<script>
+		function addwish(product_id) {
+			$.ajax({
+				headers: {'content-type': 'application/json', 'accept': 'application/json', 'X-CSRFToken': '{{ csrf_token }}'},
+				url: '/cozastore/change_wish/' + product_id + '/',
+				method: 'POST',
+				data: JSON.stringify({
+					id: product_id,
+				}),
+				success: function (data) {
+					
+					console.log('Success:', data);
+
+					var addedToWishlist = data.added_to_wishlist;
+
+					if (addedToWishlist===true) {
+						var whsihTag = document.getElementById('whishlist-cart-icon');
+						var whishTagValue = whsihTag.getAttribute('data-notify');
+
+						whishTagValue = parseInt(whishTagValue) + 1;
+						whsihTag.setAttribute('data-notify', whishTagValue);
+					} else {
+						var whsihTag = document.getElementById('whishlist-cart-icon');
+						var whishTagValue = whsihTag.getAttribute('data-notify');
+
+						whishTagValue = parseInt(whishTagValue) - 1;
+						whsihTag.setAttribute('data-notify', whishTagValue);
+					}
+				},
+				error: function (data) {
+					console.log('Error', data);
+				} 
+			});
+		}
+	</script>
 
 {% endblock %}

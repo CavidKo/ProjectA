@@ -12,3 +12,8 @@ class BlogList(generics.ListCreateAPIView):
 class ClothesList(generics.ListCreateAPIView):
     queryset = Clothes.objects.filter(active=True)
     serializer_class = GetClothesSerializer
+
+
+# class AddToWhishList(generics.ListCreateAPIView):
+#     queryset = Clothes.objects.all()
+#     serializer_class = ChangeWhishSerializer

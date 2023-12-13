@@ -55,3 +55,8 @@ class GetClothesSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Blog
 #         fields = ('name', 'description', 'author', 'categories', 'tags', 'create_time')
+
+# class ChangeWhishSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Clothes
+#         fields = ('id', 'name', 'added_to_whishlist')

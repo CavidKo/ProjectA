@@ -1,3 +1,4 @@
+from django.db.models import Q
 from core.models import *
 
 
@@ -14,7 +15,8 @@ def settings(request):
         'logo': Logo.objects.first(),
         'cart_products': cart_products,
         'sum_': round(sum_, 2) if sum_ != 0 else 0,
-        'cart_products_count': cart_products.count()
+        'cart_products_count': cart_products.count(),
+        'whish_list_count': Clothes.objects.filter(Q(added_to_whishlist=True) & Q(active=True)).count(),
     }
     
     return context

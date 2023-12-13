@@ -193,12 +193,16 @@ def single_product(request, slug):
 
     sizes = product.size.all()
     colors = product.color.all()
+
+    reviews = Reviews.objects.filter(product=product).all()
     
     context = {
         'product': product,
         'sizes': sizes,
         'colors': colors,
         'related_product': related_product,
+        'reviews': reviews,
+        'review_count': reviews.count()
     }
     return render(request, 'product-detail.html', context)
 
@@ -466,7 +470,11 @@ def product(request, page_count = 1):
     return render(request, 'product.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    context = {
+        'about': About.objects.all()
+    }
+    print(context)
+    return render(request, 'about.html', context)
 
 
 def features(request):
@@ -496,6 +504,55 @@ def features(request):
         'products': products if products else None,
         'error_message': 'There are no products yet...',
     }
-    print("context:", context)
     return render(request, 'shoping-cart.html', context)
+
+
+def change_whish(request, product_id):
+    product = Clothes.objects.filter(id=product_id).first()
+    if product.added_to_whishlist is False:
+        product.added_to_whishlist = True
+    else:
+        product.added_to_whishlist=False
+    product.save()
+
+    return JsonResponse(
+        {
+            'added_to_wishlist': product.added_to_whishlist
+        }, status=200
+    )
+
+
+def add_review(request, product_id):
+    product = Clothes.objects.filter(Q(id=int(product_id)) & Q(active=True)).first()
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        message = request.POST.get('review')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+
+        Reviews.objects.create(
+            product=product,
+            rating=int(rating),
+            message=message,
+            name=name,
+            email=email
+        )
+    
+    related_product = Clothes.objects.filter(category__category = product.category).exclude(pk=product.pk)
+
+    sizes = product.size.all()
+    colors = product.color.all()
+
+    reviews = Reviews.objects.filter(product=product).all()
+    
+    context = {
+        'product': product,
+        'sizes': sizes,
+        'colors': colors,
+        'related_product': related_product,
+        'reviews': reviews,
+        'review_count': reviews.count()
+    }
+    return render(request, 'product-detail.html', context)
 

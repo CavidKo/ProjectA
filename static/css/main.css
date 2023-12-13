@@ -2088,6 +2088,15 @@ input.num-product::-webkit-inner-spin-button {
   opacity: 0;
 }
 
+.js-addedwish-b3 .icon-heart2 {
+  opacity: 0;
+}
+
+.js-addedwish-b3 .icon-heart1 {
+  opacity: 1;
+}
+
+
 /*---------------------------------------------*/
 .label-new {
   position: relative;

@@ -215,50 +215,7 @@
 <!--===============================================================================================-->	
 <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
-<script>
-    function changeProductCountInCart(productName, productPrice, productImageUrl, productSlug, sumProducts) {
-        var iconElement = document.getElementById("shopping-cart-icon");
-        iconElement.dataset.notify = parseInt(iconElement.dataset.notify) + 1;
 
-        var tagInput = document.getElementById("num-product2")
-
-        var newProduct = {
-            product: {
-                image: {
-                    url: productImageUrl
-                },
-                name: productName,
-                price: productPrice,
-                slug: productSlug
-            },
-            quantity: tagInput.value
-        };
-        
-        var cartList = document.getElementById('cart-list');
-
-        var newItem = document.createElement('li');
-        newItem.className = 'header-cart-item flex-w flex-t m-b-12';
-        newItem.innerHTML = `
-            <div class="header-cart-item-img">
-                <img src="${newProduct.product.image.url}" alt="IMG">
-            </div>
-            <div class="header-cart-item-txt p-t-8">
-                <a href=""/cozastore/product/${newProduct.product.slug}/" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                    ${newProduct.product.name}
-                </a>
-                <span class="header-cart-item-info">
-                    ${newProduct.quantity} x $${newProduct.product.price}
-                </span>
-            </div>
-        `;
-        cartList.appendChild(newItem);
-
-        var newSumProducts = parseFloat(sumProducts.replace(',', '.')) + (parseFloat(productPrice.replace(',', '.')) * parseInt(tagInput.value));
-
-        var divSum = document.getElementById('sum-products-in-side-cart');
-        divSum.textContent = "Total: $" + `${newSumProducts}`
-    }
-</script>
 <!--===============================================================================================-->
 <script>
     function setButtonClicked(buttonName) {
@@ -285,8 +242,8 @@
 </script>
 <!--===============================================================================================-->
 <script>
-    function increaseValue(oldValue, id) {
-        var inputElement = document.getElementById(`num-product${id}`);
+    function increaseValue(oldValue, id, color, size) {
+        var inputElement = document.getElementById(`num-product${id}${color}${size}`);
         var currentValue = parseInt(inputElement.value);
         
         inputElement.value = ++currentValue;
@@ -299,8 +256,8 @@
         }
     }
 
-    function decreaseValue(oldValue, id) {
-        var inputElement = document.getElementById(`num-product${id}`);
+    function decreaseValue(oldValue, id, color, size) {
+        var inputElement = document.getElementById(`num-product${id}${color}${size}`);
         var currentValue = parseInt(inputElement.value);
 
         if (currentValue > 0) {
@@ -364,27 +321,28 @@
     $('.js-addwish-b2').on('click', function(e){
         e.preventDefault();
     });
-
     $('.js-addwish-b2').each(function(){
-        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-        $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
-            
-            $(this).addClass('js-addedwish-b2');
-            $(this).off('click');
+        var wishTag = $(this);
+
+        $(this).on('click', function() {
+            if (wishTag.hasClass('js-addedwish-b2')) {
+                
+                var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+                swal(nameProduct, "is discarded from wishlist !", "success");
+                $(this).removeClass('js-addedwish-b2');
+
+            } else {
+                
+                var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+                swal(nameProduct, "is added to wishlist !", "success");
+                $(this).addClass('js-addedwish-b2');     
+
+            }
         });
     });
+    
 
-    $('.js-addwish-detail').each(function(){
-        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-        $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass('js-addedwish-detail');
-            $(this).off('click');
-        });
-    });
+    
 
     /*---------------------------------------------*/
 

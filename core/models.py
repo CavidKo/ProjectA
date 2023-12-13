@@ -3,6 +3,9 @@ from ckeditor.fields import RichTextField
 from django.utils import timezone
 from decimal import Decimal
 from django.utils.translation import gettext_lazy as _
+from SalesProject import settings
+
+from user.models import *
 
 
 # Create your models here.
@@ -76,8 +79,6 @@ class Clothes(BaseModel):
     description = RichTextField()
     image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
     added_to_whishlist = models.BooleanField(default=False)
-    # color = models.ForeignKey(Colors, on_delete=models.CASCADE, null=True)
-    # size = models.ForeignKey(Sizes, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     color = models.ManyToManyField(Colors)
     tag = models.ManyToManyField(Tags)
@@ -88,6 +89,8 @@ class Clothes(BaseModel):
     height = models.DecimalField(max_digits=8, decimal_places=2, null=True)
     materials = models.CharField(max_length=150, null=True)
     active = models.BooleanField(default=True)
+    rating = models.IntegerField(null=True, default=0)
+    assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
     slug = models.SlugField(null=True, blank=True)
 
 
@@ -174,3 +177,33 @@ class Blog(BaseModel):
     class Meta:
         verbose_name_plural = _('Blogs')
         verbose_name = _('Blogs')
+
+
+class About(BaseModel):
+    our_story_text = RichTextField()
+    our_story_image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
+    our_mission_text = RichTextField()
+    our_mission_image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
+    background_image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
+
+    def __str__(self) -> str:
+        return super().__str__()
+    
+    class Meta:
+        verbose_name_plural = _('About')
+        verbose_name = _('About')
+
+
+class Reviews(BaseModel):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.CharField(max_length=300)
+    rating = models.IntegerField(null=True)
+    product = models.ForeignKey(Clothes, on_delete=models.CASCADE, default=None)
+
+    def __str__(self) -> str:
+        return self.email
+    
+    class Meta:
+        verbose_name_plural = _('Reviews')
+        verbose_name = _('Reviews')

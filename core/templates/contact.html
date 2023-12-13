@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block content %}
 
 	<!-- Cart -->
@@ -10,7 +10,7 @@
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
-					Your Cart
+					{% trans 'Your Cart' %}
 				</span>
 
 				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -26,9 +26,9 @@
 							<img src="{{ product.product.image.url }}" alt="IMG">
 						</div>
 
-						<div class="header-cart-item-txt p-t-8">
+						<div class="header-cart-item-txt ">  <!--p-t-8-->
 							<a href="{% url 'single-product' product.product.slug %}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								{{ product.product.name }}
+								{{ product.product.name }} <br> {{ product.color }} | {{ product.size }}
 							</a>
 
 							<span class="header-cart-item-info">
@@ -41,16 +41,16 @@
 				
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: ${{ sum_ }}
+						{% trans 'Total' %}: ${{ sum_ }}
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
 						<a href="{% url 'features' %}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
+							{% trans 'View Cart' %}
 						</a>
 
 						<a href="{% url 'features' %}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
+							{% trans 'Check Out' %}
 						</a>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url({% static 'images/bg-01.jpg' %});">
 		<h2 class="ltext-105 cl0 txt-center">
-			Contact
+			{% trans 'Contact' %}
 		</h2>
 	</section>	
 
@@ -80,7 +80,7 @@
 						</div>
 						{% endfor %}
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
-							Send Us A Message
+							{% trans 'Send Us A Message' %}
 						</h4>
 
 						<!-- <div class="bor8 m-b-20 how-pos4-parent">
@@ -93,7 +93,7 @@
 						</div> -->
 
 						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							Submit
+							{% trans 'Submit' %}
 						</button>
 					</form>
 				</div>
@@ -106,7 +106,7 @@
 
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Address
+								{% trans 'Address' %}
 							</span>
 
 							<p class="stext-115 cl6 size-213 p-t-18">
@@ -122,7 +122,7 @@
 
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Lets Talk
+								{% trans 'Lets Talk' %}
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
@@ -138,7 +138,7 @@
 
 						<div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Sale Support
+								{% trans 'Sale Support' %}
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
