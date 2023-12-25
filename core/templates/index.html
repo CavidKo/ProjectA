@@ -70,7 +70,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									{% trans 'Women Collection 2023' %}
+									{% trans 'Women Collection' %} 2023
 								</span>
 							</div>
 								
@@ -81,7 +81,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="{% url 'shop' %}?category=women" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{% url 'shop' %}?category={% trans 'women' %}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									{% trans 'Shop Now' %}
 								</a>
 							</div>
@@ -105,7 +105,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="{% url 'shop' %}?category=men" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{% url 'shop' %}?category={% trans 'men' %}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									{% trans 'Shop Now' %}
 								</a>
 							</div>
@@ -118,7 +118,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									{% trans 'Men Collection 2023' %}
+									{% trans 'Men Collection' %} 2023
 								</span>
 							</div>
 								
@@ -129,7 +129,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="{% url 'shop' %}?category=men" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{% url 'shop' %}?category={% trans 'men' %}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									{% trans 'Shop Now' %}
 								</a>
 							</div>
@@ -150,14 +150,14 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{% static 'images/banner-01.jpg' %}" alt="IMG-BANNER">
 
-						<a href="{% url 'shop' %}?category=women" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{% url 'shop' %}?category={% trans 'women' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									{% trans 'Women' %}
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									{% trans 'Spring 2023' %}
+									{% trans 'Spring' %} 2023
 								</span>
 							</div>
 
@@ -175,14 +175,14 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{% static 'images/banner-02.jpg' %}" alt="IMG-BANNER">
 
-						<a href="{% url 'shop' %}?category=men" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{% url 'shop' %}?category={% trans 'men' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									{% trans 'Men' %}
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									{% trans 'Spring 2023' %}
+									{% trans 'Spring' %} 2023
 								</span>
 							</div>
 
@@ -200,7 +200,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{% static 'images/banner-03.jpg' %}" alt="IMG-BANNER">
 
-						<a href="{% url 'shop' %}?category=accessories" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{% url 'shop' %}?category={% trans 'accessories' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									{% trans 'Accessories' %}
@@ -235,27 +235,27 @@
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<a href="?{% if search %}search={{search}}&{% endif %}category=all{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'all' %}how-active1{% endif %}" data-filter="*">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'all'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'all' %}how-active1{% endif %}" data-filter="*">
 						{% trans 'All Products' %}
 					</a>
 
-					<a href="?{% if search %}search={{search}}&{% endif %}category=women{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'women' %}how-active1{% endif %}" data-filter=".women">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'women'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'women' %}how-active1{% endif %}" data-filter=".women">
 						{% trans 'Women' %}
 					</a>
 
-					<a href="?{% if search %}search={{search}}&{% endif %}category=men{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'men' %}how-active1{% endif %}" data-filter=".men">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'men'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'men' %}how-active1{% endif %}" data-filter=".men">
 						{% trans 'Men' %}
 					</a>
 
-					<a href="?{% if search %}search={{search}}&{% endif %}category=bags{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'bags' %}how-active1{% endif %}" data-filter=".bag">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'bags'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'bags' %}how-active1{% endif %}" data-filter=".bag">
 						{% trans 'Bags' %}
 					</a>
 
-					<a href="?{% if search %}search={{search}}&{% endif %}category=shoes{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'shoes' %}how-active1{% endif %}" data-filter=".shoes">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'shoes'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'shoes' %}how-active1{% endif %}" data-filter=".shoes">
 						{% trans 'Shoes' %}
 					</a>
 
-					<a href="?{% if search %}search={{search}}&{% endif %}category=watches{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'watches' %}how-active1{% endif %}" data-filter=".watches">
+					<a href="?{% if search %}search={{search}}&{% endif %}category={% trans 'watches'%}{% if sort_by %}&sort_by={{sort_by}}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if request.GET.category == 'watches' %}how-active1{% endif %}" data-filter=".watches">
 						{% trans 'Watches' %}
 					</a>
 				</div>
@@ -267,7 +267,7 @@
 						 {% trans 'Filter'%}
 					</div>
 
-					<a href="?category=all" class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4">
+					<a href="?category={% trans 'all'%}" class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4">
 						<i class='bx bx-reset cl2 m-r-6 fs-15 trans-04'></i>
 						{% trans 'Reset'%}
 					</a>
@@ -350,7 +350,7 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}price=all{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.price == 'all' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}price={% trans 'all' %}{% if color %}&color={{ color }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.price == 'all' %}filter-link-active{% endif %}">
 										{% trans 'All' %}
 									</a>
 								</li>
@@ -398,7 +398,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=black{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'black' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'black' %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'black' %}filter-link-active{% endif %}">
 										{% trans 'Black' %}
 									</a>
 								</li>
@@ -408,7 +408,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=blue{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'blue' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'blue' %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'blue' %}filter-link-active{% endif %}">
 										{% trans 'Blue' %}
 									</a>
 								</li>
@@ -418,7 +418,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=grey{% if tag %}&tag={{ tag }}{% endif %}"  class="filter-link stext-106 trans-04 {% if request.GET.color == 'grey' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'grey' %}{% if tag %}&tag={{ tag }}{% endif %}"  class="filter-link stext-106 trans-04 {% if request.GET.color == 'grey' %}filter-link-active{% endif %}">
 										{% trans 'Grey' %}
 									</a>
 								</li>
@@ -428,7 +428,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=green{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'green' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'green' %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'green' %}filter-link-active{% endif %}">
 										{% trans 'Green' %}
 									</a>
 								</li>
@@ -438,7 +438,7 @@
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=red{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'red' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'red' %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'red' %}filter-link-active{% endif %}">
 										{% trans 'Red' %}
 									</a>
 								</li>
@@ -448,7 +448,7 @@
 										<i class="zmdi zmdi-circle-o"></i>
 									</span>
 
-									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color=white{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'white' %}filter-link-active{% endif %}">
+									<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}color={% trans 'white' %}{% if tag %}&tag={{ tag }}{% endif %}" class="filter-link stext-106 trans-04 {% if request.GET.color == 'white' %}filter-link-active{% endif %}">
 										{% trans 'White' %}
 									</a>
 								</li>
@@ -461,23 +461,23 @@
 							</div>
 
 							<div class="flex-w p-t-4 m-r--5">
-								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag=fashion" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'fashion' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
+								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag={% trans 'fashion'|get_slugifyer %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'fashion' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
 									{% trans 'Fashion' %}
 								</a>
 
-								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag=lifestyle" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'lifestyle' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
+								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag={% trans 'lifestyle'|get_slugifyer %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'lifestyle' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
 									{% trans 'Lifestyle' %}
 								</a>
 
-								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag=denim" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'denim' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
+								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag={% trans 'denim'|get_slugifyer %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'denim' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
 									{% trans 'Denim' %}
 								</a>
 
-								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag=streetstyle" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'streetstyle' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
+								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag={% trans 'streetstyle'|get_slugifyer %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'streetstyle' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
 									{% trans 'Streetstyle' %}
 								</a>
 
-								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag=crafts" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'crafts' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
+								<a href="?{% if search %}search={{search}}&{% endif %}{% if category %}category={{category}}&{% endif %}{% if sort_by %}sort_by={{ sort_by }}&{% endif %}{% if price %}price={{ price }}&{% endif %}{% if color %}color={{ color }}&{% endif %}tag={% trans 'crafts'|get_slugifyer %}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" {% if request.GET.tag == 'crafts' %} style="border-color: #4272d7; color: #4272d7;" {% endif %}>
 									{% trans 'Crafts' %}
 								</a>
 							</div>

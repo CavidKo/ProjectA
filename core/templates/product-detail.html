@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
+{% load my_filters %}
 	<br>
 	<br>
 	<!-- Cart -->
@@ -109,7 +110,7 @@
 					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14 js-name-b3">
 								{{product.name}}
 							</h4>
 
@@ -118,7 +119,7 @@
 							</span>
 
 							<p class="stext-102 cl3 p-t-23">
-								{{product.description|safe}}
+								{{ product.description|safe }}
 							</p>
 							
 							<!--  -->
@@ -189,20 +190,26 @@
 							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-										<i class="zmdi zmdi-favorite"></i>
-									</a>
+									{% if product.added_to_whishlist == False %}
+										<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" onclick="addwish2({{ product.id }})" data-tooltip="Add to Wishlist">
+											<i class="zmdi zmdi-favorite-outline"></i>
+										</a>
+									{% else %}
+										<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" onclick="addwish2({{ product.id }})" data-tooltip="Add to Wishlist">
+											<i class="zmdi zmdi-favorite"></i>
+										</a>
+									{% endif %}
 								</div>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<a href="{{ footer_info.facebook }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+								<a href="{{ footer_info.twitter }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+								<a href="{{ footer_info.google_plus }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
 							</div>
@@ -314,7 +321,7 @@
 										{% for review in reviews %}
 											<div class="flex-w flex-t p-b-68">
 												<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-													<img src="images/avatar-01.jpg" alt="AVATAR">
+													<img src="{% static 'images/avatar-01.jpg' %}" alt="AVATAR">
 												</div>
 
 												<div class="size-207">
@@ -324,7 +331,12 @@
 														</span>
 														
 														<span class="fs-18 cl11">
-															<i class="zmdi zmdi-star"></i> 														
+															{% for star in review.rating|full_star_range %}
+																<i class="zmdi zmdi-star"></i>
+															{% endfor %}
+															{% for empty_star in review.rating|empty_star_range %}
+																<i class="zmdi zmdi-star-outline"></i>
+															{% endfor %}
 														</span>
 													</div>
 
@@ -336,8 +348,8 @@
 										{% endfor %}
 										
 										<!-- Add review -->
-										<form class="w-full" method="POST" action="{% url 'add-review' product.id %}">
-											{% csrf_token %}
+										<form class="w-full" method="GET" action="{% url 'add-review' product.id %}">
+											<!-- {% csrf_token %} -->
 											<h5 class="mtext-108 cl2 p-b-7">
 												{% trans 'Add a review' %}
 											</h5>
@@ -363,17 +375,17 @@
 
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Your review</label>
+													<label class="stext-102 cl3" for="review">{% trans 'Your review' %}</label>
 													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review" required></textarea>
 												</div>
 
 												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label>
+													<label class="stext-102 cl3" for="name">{% trans 'Name' %}</label>
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" required>
 												</div>
 
 												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label>
+													<label class="stext-102 cl3" for="email">{% trans 'Email' %}</label>
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email" required>
 												</div>
 											</div>
@@ -429,7 +441,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="{% url 'single-product' product.slug %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										{{ product.name }}
+										{{ product.name | filter_ }}
 									</a>
 
 									<span class="stext-105 cl3">
@@ -473,6 +485,7 @@
 					<div class="flex-w flex-sb-m p-b-17">
 						<span class="mtext-107 cl2 p-r-20">
 							${name}
+							{{ product.product.name }} <br> {{ product.color }} | {{ product.size }}
 						</span>
 
 						<span class="fs-18 cl11">
@@ -518,7 +531,9 @@
 				},
 				quantity: tagInput.value
 			};
-			
+			var size = document.getElementById('dropdown1').value
+			var color = document.getElementById('dropdown2').value
+
 			var cartList = document.getElementById('cart-list');
 
 			var newItem = document.createElement('li');
@@ -529,7 +544,7 @@
 				</div>
 				<div class="header-cart-item-txt p-t-8">
 					<a href=""/cozastore/product/${newProduct.product.slug}/" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-						${newProduct.product.name}
+						${newProduct.product.name} <br> ${color} | ${size} 
 					</a>
 					<span class="header-cart-item-info">
 						${newProduct.quantity} x $${newProduct.product.price}
@@ -543,6 +558,42 @@
 			var divSum = document.getElementById('sum-products-in-side-cart');
 			divSum.textContent = "Total: $" + `${newSumProducts}`
     	}
+	</script>
+
+	<script>
+		function addwish2(product_id) {
+			$.ajax({
+				headers: {'content-type': 'application/json', 'accept': 'application/json', 'X-CSRFToken': '{{ csrf_token }}'},
+				url: '/cozastore/change_wish/' + product_id + '/',
+				method: 'POST',
+				data: JSON.stringify({
+					id: product_id,
+				}),
+				success: function (data) {
+					
+					console.log('Success:', data);
+
+					var addedToWishlist = data.added_to_wishlist;
+
+					if (addedToWishlist===true) {
+						var whsihTag = document.getElementById('whishlist-cart-icon');
+						var whishTagValue = whsihTag.getAttribute('data-notify');
+
+						whishTagValue = parseInt(whishTagValue) + 1;
+						whsihTag.setAttribute('data-notify', whishTagValue);
+					} else {
+						var whsihTag = document.getElementById('whishlist-cart-icon');
+						var whishTagValue = whsihTag.getAttribute('data-notify');
+
+						whishTagValue = parseInt(whishTagValue) - 1;
+						whsihTag.setAttribute('data-notify', whishTagValue);
+					}
+				},
+				error: function (data) {
+					console.log('Error', data);
+				} 
+			});
+		}
 	</script>
 		
 {% endblock %}

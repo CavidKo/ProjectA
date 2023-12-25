@@ -23,6 +23,8 @@ from rangefilter.filters import (
 admin.site.register(Contact)
 admin.site.register(Logo)
 admin.site.register(Reviews)
+admin.site.register(CozaStoreGallery)
+admin.site.register(BlogComments)
 
 @admin.register(CartProduct)
 class CartProductAdmin(TranslationAdmin):

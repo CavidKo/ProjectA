@@ -92,11 +92,16 @@ class Clothes(BaseModel):
     rating = models.IntegerField(null=True, default=0)
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
     slug = models.SlugField(null=True, blank=True)
+    is_new = models.BooleanField(default=True)
 
 
     def save(self, *args, **kwargs):       
         if self.create_time is None:
             self.create_time = timezone.now()
+
+        if self.is_new and (timezone.now() - self.create_time).days >= 3:
+            self.is_new = False
+
         if self.slug is None:
             self.slug = f"{self.name.replace(' ', '-').lower()}-{str(self.create_time.strftime('%d-%m-%Y'))}"
         super().save(*args, **kwargs)
@@ -133,9 +138,11 @@ class Settings(BaseModel):
     adress = models.CharField(max_length=250, default=None)
     phone = models.CharField(max_length=20, default=None)
     support = models.EmailField(max_length=100, default=None)
-    facebook = models.URLField(max_length=50)
-    instagram = models.URLField(max_length=50)
-    pinterest = models.URLField(max_length=50)
+    facebook = models.URLField(max_length=50, null=True)
+    instagram = models.URLField(max_length=50, null=True)
+    pinterest = models.URLField(max_length=50, null=True)
+    twitter = models.URLField(max_length=50, null=True)
+    google_plus = models.URLField(max_length=50, null=True)
     info = models.CharField(max_length=500, null=True)
 
     class Meta:
@@ -207,3 +214,28 @@ class Reviews(BaseModel):
     class Meta:
         verbose_name_plural = _('Reviews')
         verbose_name = _('Reviews')
+
+
+class BlogComments(BaseModel):
+    name = models.CharField(max_length=100, null=True)
+    email = models.EmailField(null=True)
+    message = models.CharField(max_length=300, null=True)
+    website = models.CharField(max_length=100, null=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, default=None)
+
+    def __str__(self) -> str:
+        return self.email
+    
+    class Meta:
+        verbose_name_plural = _('Blog comments')
+        verbose_name = _('Blog comments')
+
+
+class CozaStoreGallery(BaseModel):
+    image = models.ImageField(upload_to='media/product_images/', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = _('Image Gallery')
+        verbose_name = _('Image Gallery')
+
+

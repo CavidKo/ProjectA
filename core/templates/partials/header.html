@@ -64,7 +64,7 @@
                             <ul class="sub-menu ctive-menu">
                                 <li><a href="{% url 'home' %}">{% trans 'Homepage 1' %}</a></li>
                                 <li><a href="{% url 'home2' %}">{% trans 'Homepage 2' %}</a></li>
-                                <li><a href="{% url 'home3' %}">{% trans 'Homepage 3' %}</a></li>
+                                <li><a href="{% url 'home3' 1 %}">{% trans 'Homepage 3' %}</a></li>
                             </ul>
                         </li>
 
@@ -185,7 +185,7 @@
                 <ul class="sub-menu-m">
                     <li><a href="{% url 'home' %}">{% trans 'Homepage 1' %}</a></li>
                     <li><a href="{% url 'home2' %}">{% trans 'Homepage 2' %}</a></li>
-                    <li><a href="{% url 'home3' %}">{% trans 'Homepage 3' %}</a></li>
+                    <li><a href="{% url 'home3' 1 %}">{% trans 'Homepage 3' %}</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>

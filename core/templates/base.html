@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>CozaStore</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -59,7 +59,7 @@
 </div>
 
 <!-- Modal1 -->
-<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+<!-- <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
     <div class="overlay-modal1 js-hide-modal1"></div>
 
     <div class="container">
@@ -124,7 +124,6 @@
                             Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
                         </p>
                         
-                        <!--  -->
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
@@ -185,7 +184,6 @@
                             </div>	
                         </div>
 
-                        <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
                                 <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
@@ -210,7 +208,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!--===============================================================================================-->	
 <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
@@ -328,7 +326,7 @@
             if (wishTag.hasClass('js-addedwish-b2')) {
                 
                 var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-                swal(nameProduct, "is discarded from wishlist !", "success");
+                swal(nameProduct, "is discarded from wishlist !", "error");
                 $(this).removeClass('js-addedwish-b2');
 
             } else {
@@ -376,6 +374,37 @@
 <script src="js/map-custom.js"></script>
 
 <script src="{% static 'js/main.js' %}"></script>
+
+<script>
+    $('.zmdi').on('click', function(e){
+        e.preventDefault();
+    });
+    $('.zmdi').each(function(){
+        var wishTag = $(this);
+
+        $(this).on('click', function() {
+            
+            if (wishTag.hasClass('zmdi zmdi-favorite')) {
+
+                var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-b3').html()
+                swal(nameProduct, "is discarded from wishlist !", "error");
+
+                $(this).removeClass('zmdi zmdi-favorite');
+                $(this).addClass('zmdi zmdi-favorite-outline');
+
+
+            } else {
+                
+                var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-b3').html();
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).removeClass('zmdi zmdi-favorite-outline');
+                $(this).addClass('zmdi zmdi-favorite');  
+
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

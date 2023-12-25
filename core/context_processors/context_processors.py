@@ -13,6 +13,7 @@ def settings(request):
     context = {
         'footer_info': Settings.objects.first(),
         'logo': Logo.objects.first(),
+        'logo2': Logo.objects.last(),
         'cart_products': cart_products,
         'sum_': round(sum_, 2) if sum_ != 0 else 0,
         'cart_products_count': cart_products.count(),
