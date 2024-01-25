@@ -52,12 +52,12 @@ urlpatterns = [
     # path('', include(user_urls)),
     # path('admin/', admin.site.urls),
     # path('grappelli/', include('grappelli.urls')),   # grappelli
+    path('', include('social_django.urls', namespace='social')),
 ]
 
 urlpatterns += i18n_patterns(
     path('', include(user_urls)),
     path('cozastore/', include(core_urls)),
-    path('', include('social_django.urls', namespace='social')),
     path('rosetta/', include('rosetta.urls')),
     path('admin/', admin.site.urls),
 )

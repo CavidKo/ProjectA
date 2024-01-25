@@ -101,7 +101,7 @@
 				{% endfor %}
 				{% for blog in blogs %}
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
-						<a href="{% url 'blog-detail' %}" class="hov-img0 how-pos5-parent">
+						<a href="{% url 'blog-detail' blog.id %}" class="hov-img0 how-pos5-parent">
 							<img src="{{ blog.image.url }}" alt="IMG-BLOG">
 
 							<div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -117,7 +117,7 @@
 
 						<div class="p-t-32">
 							<h4 class="p-b-15">
-								<a href="{% url 'blog-detail' %}" class="ltext-108 cl2 hov-cl1 trans-04">
+								<a href="{% url 'blog-detail' blog.id %}" class="ltext-108 cl2 hov-cl1 trans-04">
 									{{ blog.name }}
 								</a>
 							</h4>
@@ -146,7 +146,7 @@
 									</span>
 								</span>
 
-								<a href="{% url 'blog-detail' %}" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+								<a href="{% url 'blog-detail' blog.id %}" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 									{% trans 'Continue Reading' %}
 
 									<i class="fa fa-long-arrow-right m-l-9"></i>

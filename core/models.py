@@ -99,9 +99,6 @@ class Clothes(BaseModel):
         if self.create_time is None:
             self.create_time = timezone.now()
 
-        if self.is_new and (timezone.now() - self.create_time).days >= 3:
-            self.is_new = False
-
         if self.slug is None:
             self.slug = f"{self.name.replace(' ', '-').lower()}-{str(self.create_time.strftime('%d-%m-%Y'))}"
         super().save(*args, **kwargs)

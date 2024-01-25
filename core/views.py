@@ -669,6 +669,10 @@ def add_review(request, product_id):
         name = request.GET.get('name')
         email = request.GET.get('email')
 
+        if rating:
+            product.rating = round((product.rating + int(rating)) / 2, 0)
+            product.save()
+
         review = Reviews.objects.filter(
             Q(product=product) & Q(rating=rating) & Q(message=message) & Q(name=name) & Q(email=email)
         ).first()
@@ -718,6 +722,9 @@ def add_blog_comment(request, blog_id):
             blog_comment = BlogComments.objects.filter(
                 Q(blog=detailed_blog) & Q(name=name) & Q(email=email) & Q(message=comment)
             ).first()
+
+            detailed_blog.comment_count += 1
+            detailed_blog.save()
 
             if not blog_comment:
                 BlogComments.objects.create(

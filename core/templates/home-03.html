@@ -75,7 +75,7 @@
 								<a href="{% url 'shop' %}">{% trans 'Shop' %}</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
+							<li class="label1" data-label1="{% trans 'HOT' %}">
 								<a href="{% url 'features' %}">{% trans 'Features' %}</a>
 							</li>
 
@@ -176,7 +176,7 @@
 				</li>
 
 				<li>
-					<a href="{% url 'features' %}" class="label1 rs1" data-label1="hot">{% trans 'Features' %}</a>
+					<a href="{% url 'features' %}" class="label1 rs1" data-label1="{% trans 'HOT' %}">{% trans 'Features' %}</a>
 				</li>
 
 				<li>
@@ -830,7 +830,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-pic hov-img0 {% if product.is_new == True %}label-new{% endif %}" data-label="New">
+							<div class="block2-pic hov-img0 {% if product.is_new == True %}label-new{% endif %}" data-label="{% trans 'New' %}">
 								<img src="{{ product.image.url }}" alt="IMG-PRODUCT">
 
 								<a href="{% url 'single-product' product.slug %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">  <!--js-show-modal1-->
